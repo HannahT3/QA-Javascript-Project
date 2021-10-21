@@ -103,7 +103,7 @@ let employeeInfo =
     ];
 
 
-let ninum = 343433;
+/*let ninum = 343433;
 
 let name = "fullname";
 
@@ -111,12 +111,31 @@ let phoneNum = 123213;
 
 let myAddress = "myAddress";
 
-let dep = "HR";
+let dep = "HR"; 
+
+
 
 function addNewEmployee(ninum, name, phoneNum, myAddress, dep) {
     employeeInfo.push({ "ninumber": ninum, "fullname": name, "phone": phoneNum, "address": myAddress, "department": dep });
     console.log(employeeInfo);
     return employeeInfo;
+} */
+
+function viewEmployees() {
+    let employeeList = document.querySelector("employee-info");
+
+    let employeeItems = " ";
+
+
+    for (employee of employeeInfo) {
+        employeeItems += "<li>" + employee.fullname + "</li>";
+    }
+
+    employeeList.innerHTML = employeeItems;
+
 }
 
-addNewEmployee();
+viewEmployees();
+
+
+//addNewEmployee();
