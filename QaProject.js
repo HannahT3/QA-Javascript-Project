@@ -101,8 +101,9 @@ let employeeInfo =
 
 
     ];
+console.log(employeeInfo[0]);
 
-
+//console.log(employeeInfo[0]);
 /*let ninum = 343433;
 
 let name = "fullname";
@@ -111,30 +112,93 @@ let phoneNum = 123213;
 
 let myAddress = "myAddress";
 
-let dep = "HR"; 
+let dep = "HR"; */
 
 
 
+/*
 function addNewEmployee(ninum, name, phoneNum, myAddress, dep) {
     employeeInfo.push({ "ninumber": ninum, "fullname": name, "phone": phoneNum, "address": myAddress, "department": dep });
     console.log(employeeInfo);
     return employeeInfo;
 } */
 
+
+//SEE DOMS FOR EXAMPLES --- Create a table???
 function viewEmployees() {
-    let employeeList = document.querySelector("employee-info");
+    /*let employeeList = document.querySelector("employee-info");
+  
+      let employeeItems = " ";
+  
+  
+      for (employee of employeeInfo) {
+          employeeItems += "<li>" + employee.fullname + "</li>";
+      }
+  
+      employeeList.innerHTML = employeeItems; */
+    // const heading = document.createElement("div");
+    // for (employee of employeeInfo) {
+    //     employeeItems += "<li>" + employee.fullname + "</li>";
+    // }
 
-    let employeeItems = " ";
+    // const heading_text = document.createTextNode(employeeItems);
+    // heading.appendChild(heading_text);
+    // document.body.appendChild(heading);
+
+    // let str = JSON.stringify(employeeInfo[1]);
+    // console.log(str);
 
 
-    for (employee of employeeInfo) {
-        employeeItems += "<li>" + employee.fullname + "</li>";
+
+    // let allP = document.getElementById("para");
+    // let newP = document.createElement("p");
+    // let theText = document.createTextNode(str);
+    // newP.appendChild(theText);
+    // allP.appendChild(newP);
+
+    //ACKNOWLEDGE https://www.encodedna.com/javascript/populate-json-data-to-html-table-using-javascript.htm
+
+    // creating a table
+    let table = document.createElement("table");
+
+    //Gets header values
+    let col = [];
+    for (let i = 0; i < employeeInfo.length; i++) {
+        for (let key in employeeInfo[i]) {
+            if (col.indexOf(key) === -1) {
+                col.push(key);
+            }
+        }
     }
 
-    employeeList.innerHTML = employeeItems;
+    //WHY INDEX OF -1?
+
+
+    // create html table header row using extracted headers
+
+    let tableRow = table.insertRow(-1); //table row
+    for (let i = 0; i < col.length; i++) {
+        let tableHeader = document.createElement("th") //table header
+        tableHeader.innerHTML = col[i];
+        tableRow.appendChild(th);
+    }
+
+    //add json data
+    for (let i = 0; i < employeeInfo.length; i++) {
+        tableRow = table.insertRow(-1);
+
+        for (let j = 0; j < col.length; j++) {
+            let tabCell = tableRow.insertCell(-1);
+            tabCell.innerHTML = employeeInfo[i][col[j]];
+        }
+    }
+
+    //add ntable to container
+    let divContainer = document.getElementById("para");
+    divContainer.innerHTML = "";
+    divContainer.appendChild(table);
 
 }
-
 viewEmployees();
 
 
