@@ -124,39 +124,13 @@ function addNewEmployee(ninum, name, phoneNum, myAddress, dep) {
 } */
 
 
-//SEE DOMS FOR EXAMPLES --- Create a table???
+//SEE DOMS FOR EXAMPLES --- Create a table
 function viewEmployees() {
-    /*let employeeList = document.querySelector("employee-info");
-  
-      let employeeItems = " ";
-  
-  
-      for (employee of employeeInfo) {
-          employeeItems += "<li>" + employee.fullname + "</li>";
-      }
-  
-      employeeList.innerHTML = employeeItems; */
-    // const heading = document.createElement("div");
-    // for (employee of employeeInfo) {
-    //     employeeItems += "<li>" + employee.fullname + "</li>";
-    // }
-
-    // const heading_text = document.createTextNode(employeeItems);
-    // heading.appendChild(heading_text);
-    // document.body.appendChild(heading);
 
     // let str = JSON.stringify(employeeInfo[1]);
     // console.log(str);
 
 
-
-    // let allP = document.getElementById("para");
-    // let newP = document.createElement("p");
-    // let theText = document.createTextNode(str);
-    // newP.appendChild(theText);
-    // allP.appendChild(newP);
-
-    //ACKNOWLEDGE https://www.encodedna.com/javascript/populate-json-data-to-html-table-using-javascript.htm
 
     // creating a table
     let table = document.createElement("table");
@@ -171,7 +145,7 @@ function viewEmployees() {
         }
     }
 
-    //WHY INDEX OF -1?
+
 
 
     // create html table header row using extracted headers
@@ -183,7 +157,7 @@ function viewEmployees() {
         tableRow.appendChild(th);
     }
 
-    //add json data
+    //add data to the table
     for (let i = 0; i < employeeInfo.length; i++) {
         tableRow = table.insertRow(-1);
 
@@ -193,7 +167,7 @@ function viewEmployees() {
         }
     }
 
-    //add ntable to container
+    //add table to container
     let divContainer = document.getElementById("para");
     divContainer.innerHTML = "";
     divContainer.appendChild(table);
@@ -202,4 +176,4 @@ function viewEmployees() {
 viewEmployees();
 
 
-//addNewEmployee();
+
