@@ -102,74 +102,83 @@ let employeeInfo =
 
     ];
 
-//console.log(employeeInfo[0]);
-let ninum = document.getElementById("nin");
-let fName = document.getElementById("name");
-let phoneNum = document.getElementById("phone");
-let address = document.getElementById("address");
-let dep = document.getElementById("department");
 
 
-function addNewEmployee(ninum, fName, phoneNum, myAddress, dep) {
-    employeeInfo.push({ "ninumber": ninum, "fullname": fName, "phone": phoneNum, "address": myAddress, "department": dep });
-    console.log(employeeInfo);
-    return employeeInfo;
-}
 
-addNewEmployee();
-console.log(employeeInfo);
+
+
+// let ninum = document.getElementById("nin");
+// let fName = document.getElementById("name");
+// let phoneNum = document.getElementById("phone");
+// let address = document.getElementById("address");
+// let dep = document.getElementById("department");
+
+
+// function addNewEmployee(ninum, fName, phoneNum, myAddress, dep) {
+//     employeeInfo.push({ "ninumber": ninum, "fullname": fName, "phone": phoneNum, "address": myAddress, "department": dep });
+//     console.log(employeeInfo);
+//     return employeeInfo;
+// }
+
+// addNewEmployee();
+
+let viewBtn = document.querySelector("view-Btn");
+
 
 
 //SEE DOMS FOR EXAMPLES --- Create a table
-// function viewEmployees() {
+function viewEmployees() {
 
-//     // let str = JSON.stringify(employeeInfo[1]);
-//     // console.log(str);
-
-
-
-//     // creating a table
-//     let table = document.createElement("table");
-
-//     //Gets header values
-//     let col = [];
-//     for (let i = 0; i < employeeInfo.length; i++) {
-//         for (let key in employeeInfo[i]) {
-//             if (col.indexOf(key) === -1) {
-//                 col.push(key);
-//             }
-//         }
-//     }
+    // let str = JSON.stringify(employeeInfo[1]);
+    // console.log(str);
 
 
 
+    // creating a table
+    let table = document.createElement("table");
 
-//     // create html table header row using extracted headers
+    //Gets header values
+    let col = [];
+    for (let i = 0; i < employeeInfo.length; i++) {
+        for (let key in employeeInfo[i]) {
+            if (col.indexOf(key) === -1) {
+                col.push(key);
+            }
+        }
+    }
 
-//     let tableRow = table.insertRow(-1); //table row
-//     for (let i = 0; i < col.length; i++) {
-//         let tableHeader = document.createElement("th") //table header
-//         tableHeader.innerHTML = col[i];
-//         tableRow.appendChild(th);
-//     }
 
-//     //add data to the table
-//     for (let i = 0; i < employeeInfo.length; i++) {
-//         tableRow = table.insertRow(-1);
+    // create html table header row using extracted headers
 
-//         for (let j = 0; j < col.length; j++) {
-//             let tabCell = tableRow.insertCell(-1);
-//             tabCell.innerHTML = employeeInfo[i][col[j]];
-//         }
-//     }
+    let tableRow = table.insertRow(-1); //table row
+    for (let i = 0; i < col.length; i++) {
+        let tableHeader = document.createElement("th") //table header
+        tableHeader.innerHTML = col[i];
+        tableRow.appendChild(tableHeader);
+    }
 
-//     //add table to container
-//     let divContainer = document.getElementById("para");
-//     divContainer.innerHTML = "";
-//     divContainer.appendChild(table);
+    //add data to the table
+    for (let i = 0; i < employeeInfo.length; i++) {
+        tableRow = table.insertRow(-1);
 
-// }
-// viewEmployees();
+        for (let j = 0; j < col.length; j++) {
+            let tabCell = tableRow.insertCell(-1);
+            tabCell.innerHTML = employeeInfo[i][col[j]];
+        }
+    }
+
+    //add table to container
+    let divContainer = document.getElementById("para");
+    divContainer.innerHTML = "";
+    divContainer.appendChild(table);
+
+}
+
+viewEmployees();
+
+
+//Event listening, bubbling
+//viewBtn.addEventListener("click", viewEmployees);
 
 
 
