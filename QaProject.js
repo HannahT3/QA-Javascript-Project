@@ -107,23 +107,36 @@ let employeeInfo =
 
 
 
-// let ninum = document.getElementById("nin");
-// let fName = document.getElementById("name");
-// let phoneNum = document.getElementById("phone");
-// let address = document.getElementById("address");
-// let dep = document.getElementById("department");
+let niInput = document.querySelector("#nin");
+let fullNameInput = document.querySelector("#name");
+let phoneNumberInput = document.querySelector("#phone");
+let addressInput = document.querySelector("#address");
+let depInput = document.querySelector("#department");
 
 
-// function addNewEmployee(ninum, fName, phoneNum, myAddress, dep) {
-//     employeeInfo.push({ "ninumber": ninum, "fullname": fName, "phone": phoneNum, "address": myAddress, "department": dep });
+
+
+function addNewEmployee(ninum, fName, phoneNum, myAddress, dep) {
+
+    //let newEmployee = { ' "ninumber": ninum', '"fullname": fName', '"phone": phoneNum', '"address": myAddress', '"department": dep '};
+    // let addEmployee = JSON.parse(newEmployee);
+    employeeInfo.push({ "ninumber": ninum, "fullname": fName, "phone": phoneNum, "address": myAddress, "department": dep });
+    console.log(employeeInfo);
+
+}
+
+// function addNewEmployee() {
+
+//     employeeInfo.push({ "ninumber": "Tdfdfe", "fullname": "Fredd Jones", "phone": "3409343", "address": "5 My House", "department": "HR" });
 //     console.log(employeeInfo);
-//     return employeeInfo;
+
 // }
 
-// addNewEmployee();
 
-let viewBtn = document.querySelector("view-Btn");
+//addNewEmployee("dfdjk", "my name", "3434", "4 my address ", "HR");
 
+let viewBtn = document.querySelector("#view-Btn");
+let addBtn = document.querySelector("#add-Btn");
 
 
 //SEE DOMS FOR EXAMPLES --- Create a table
@@ -131,8 +144,6 @@ function viewEmployees() {
 
     // let str = JSON.stringify(employeeInfo[1]);
     // console.log(str);
-
-
 
     // creating a table
     let table = document.createElement("table");
@@ -174,11 +185,19 @@ function viewEmployees() {
 
 }
 
-viewEmployees();
+
+
+//viewEmployees();
 
 
 //Event listening, bubbling
-//viewBtn.addEventListener("click", viewEmployees);
+viewBtn.addEventListener("click", viewEmployees);
+addBtn.addEventListener("click", addNewEmployee(niInput, fullNameInput, phoneNumberInput, addressInput, depInput));
+
+
+
+
+
 
 
 
