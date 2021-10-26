@@ -107,11 +107,11 @@ let employeeInfo =
 
 
 
-let niInput = (document.getElementById("nin"));
-let fullNameInput = (document.getElementById("name"));
-let phoneNumberInput = (document.getElementById("phone"));
-let addressInput = (document.getElementById("address"));
-let depInput = (document.getElementById("department"));
+let niInput = document.getElementById("nin").value;
+let fullNameInput = document.getElementById("name").value;
+let phoneNumberInput = document.getElementById("phone").value;
+let addressInput = document.getElementById("address").value;
+let depInput = document.getElementById("department").value;
 
 
 
@@ -175,14 +175,34 @@ function viewEmployees() {
 
 
 
-
+// let a = "SW34983948";
+// let b = "My Name";
+// let c = "079999999";
+// let d = "My address";
+// let e = "HR";
+// addNewEmployee(a, b, c, d, e);
 
 
 //Event listening, bubbling
 viewBtn.addEventListener("click", viewEmployees);
+
+
+
+
 addBtn.addEventListener("click", addNewEmployee(niInput, fullNameInput, phoneNumberInput, addressInput, depInput));
 
+console.log(employeeInfo);
 
+const form = document.getElementById('form');
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+})
+
+console.log(employeeInfo);
+
+
+//console.log(employeeInfo.ninumber);
 
 
 
