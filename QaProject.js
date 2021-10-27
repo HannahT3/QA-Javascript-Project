@@ -105,9 +105,11 @@ let employeeInfo =
 
 
 //Viewing employee info
-let viewBtn = document.getElementById("view-Btn")
+let viewBtn = document.getElementById("view-Btn");
 const formView = document.getElementById('form-view');
 viewBtn.addEventListener("click", viewEmployees);
+let clearBtn = document.getElementById("clear-Btn");
+clearBtn.addEventListener("click", clearEmployeeInfo);
 
 //Adding employee info
 const formAdd = document.getElementById('form-add');
@@ -320,7 +322,10 @@ function viewEmployees() {
 
 }
 
-
+function clearEmployeeInfo() {
+    let tableContainer = document.getElementById("para");
+    tableContainer.innerHTML = "";
+}
 
 // let a = "SW34983948";
 // let b = "My Name";
