@@ -149,7 +149,7 @@ function addNewEmployee(e) {
 
 function employeeSelect() {
 
-    for (var i = 0; i < employeeInfo.length; i++) {
+    for (let i = 0; i < employeeInfo.length; i++) {
         let optn = employeeInfo[i]["fullname"];
         let element = document.createElement("option");
         element.textContent = optn;
@@ -160,16 +160,36 @@ function employeeSelect() {
     }
 }
 
+// function chooseEmployee(e) {
+//     e.preventDefault();
+//     let selectedEmployee = document.getElementById("select").value;
+//     document.getElementById("message").innerHTML = "Employee selected: " + selectedEmployee;
+//     document.getElementById("nameEdit").placeholder = selectedEmployee;
+
+// }
+
 function editEmployee(e) {
     e.preventDefault();
     let selectedEmployee = document.getElementById("select").value;
-    document.getElementById("message").innerHTML = "Selected: " + selectedEmployee;
-    // msg.innerHTML = "Selected: " + + selectedEmployee;
+    document.getElementById("message").innerHTML = "Employee selected: " + selectedEmployee;
+    // document.getElementById("nameEdit").placeholder = selectedEmployee;
+    for (let j = 0; j < employeeInfo.length; j++) {
+        if (selectedEmployee == employeeInfo[j]["fullname"]) {
+            document.getElementById("ninEdit").placeholder = employeeInfo[j]["ninumber"];
+            document.getElementById("nameEdit").placeholder = employeeInfo[j]["fullname"];
+            document.getElementById("phoneEdit").placeholder = employeeInfo[j]["phone"];
+            document.getElementById("addressEdit").placeholder = employeeInfo[j]["address"];
+            document.getElementById("departmentEdit").placeholder = employeeInfo[j]["department"];
+        }
+
+    }
 
 }
 
 
 
+
+//document.getElementById("ninEdit").placeholder = placeholdername;
 
 // function updateEmployee(e) {
 //     e.preventDefault
