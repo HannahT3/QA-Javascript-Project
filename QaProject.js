@@ -230,6 +230,13 @@ function showSelectedDelete(e) {
 
 function deleteEmployee(e) {
     e.preventDefault();
+    let employeeToDelete = document.getElementById("selectToDelete").value;
+    for (let l = 0; l < employeeInfo.length; l++) {
+        if (employeeToDelete == employeeInfo[l]["fullname"]) {
+            delete employeeInfo[l];
+        }
+
+    }
 }
 
 
