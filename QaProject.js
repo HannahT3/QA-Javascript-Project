@@ -105,7 +105,7 @@ let employeeInfo =
 
 
 //Viewing employee info
-let viewBtn = document.querySelector("#view-Btn");
+let viewBtn = document.getElementById("view-Btn")
 const formView = document.getElementById('form-view');
 viewBtn.addEventListener("click", viewEmployees);
 
@@ -243,10 +243,14 @@ function deleteEmployee(e) {
     let employeeToDelete = document.getElementById("deleteInput").value;
     for (let l = 0; l < employeeInfo.length; l++) {
         if (employeeToDelete == employeeInfo[l]["ninumber"]) {
-            delete employeeInfo[l];
+            // delete employeeInfo[l];
+            let position = employeeInfo[l].indexOf;
+            employeeInfo.splice(position, 1);
         }
 
     }
+
+    console.log(employeeInfo);
 }
 
 //splice, delete sets to null w3schools/ stack overflow 
