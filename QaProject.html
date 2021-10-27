@@ -52,7 +52,7 @@
             </select>
 
             </br>
-            <button type="submit" value="submit" id="submit"> Submit </button>
+            <button type="submit" value="submit" id="submitAdd"> Submit </button>
 
         </fieldset>
     </form>
@@ -71,7 +71,7 @@
                 <option value=""> Select Employee Name</option>
             </select>
 
-            <button type="submit" value="submit" id="submit"> Submit Employee Choice </button>
+            <button type="submit" value="submit" id="submitEdit"> Submit Employee Choice </button>
 
             <p id="message"></p>
 
@@ -95,8 +95,31 @@
                 <option value="other"> Other </option>
             </select>
             </br>
-            <button type="button" id="submit2"> Submit </button>
+            <button type="button" id="submitEdit2"> Submit </button>
 
+        </fieldset>
+    </form>
+
+    <form id="form-delete">
+        <fieldset>
+            <legend> Delete an Existing Employee </legend>
+
+            <label for="dropboxDelete"> Click here to update dropdown options: </label>
+            <button id="dropboxDelete" type="button"> Update Dropdown Box </button>
+
+            </br>
+
+            <label for="selectToDelete"> Choose employee you wish to delete: </label>
+            <select name="selectToDelete" id="selectToDelete">
+                <option value=""> Select Employee Name</option>
+            </select>
+
+            <button type="submit" value="submitDelete" id="submitDelete"> Submit Employee Choice </button>
+
+            </br>
+            <p id="messageDelete"></p>
+
+            <button type="button" id="delete"> Delete Employee </button>
         </fieldset>
     </form>
 

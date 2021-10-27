@@ -104,36 +104,31 @@ let employeeInfo =
 
 
 
-
-
-
-
-
-
+//Viewing employee info
 let viewBtn = document.querySelector("#view-Btn");
-//let addBtn = document.querySelector("#add-Btn");
-let editBtn = document.getElementById("submit2");
-
 const formView = document.getElementById('form-view');
-const formAdd = document.getElementById('form-add');
-const formEdit = document.getElementById('form-edit');
-
 viewBtn.addEventListener("click", viewEmployees);
 
-
+//Adding employee info
+const formAdd = document.getElementById('form-add');
 formAdd.addEventListener("submit", addNewEmployee);
-formEdit.addEventListener("submit", editEmployee);
 
-
-
-
+//Editing employee info
+let editBtn = document.getElementById("submitEdit2");
+const formEdit = document.getElementById('form-edit');
 let dropdown = document.getElementById('updateDrop');
+formEdit.addEventListener("submit", editEmployee);
 dropdown.addEventListener("click", employeeSelect);
-
 editBtn.addEventListener("click", updateEmployee);
 
+//Deleting employee info
+let deleteBtn = document.getElementById("delete");
+const formDelete = document.getElementById('form-delete');
+let updateDeleteDrop = document.getElementById('dropboxDelete');
 
-
+updateDeleteDrop.addEventListener("click", employeeSelect);
+formDelete.addEventListener("submit", showSelectedDelete);
+deleteBtn.addEventListener("click", deleteEmployee);
 
 console.log(employeeInfo);
 
@@ -165,6 +160,19 @@ function employeeSelect() {
 
     }
 }
+
+// function employeeSelectDelete() {
+
+//     for (let z = 0; z < employeeInfo.length; z++) {
+//         let optn = employeeInfo[z]["fullname"];
+//         let element = document.createElement("option");
+//         element.textContent = optn;
+//         element.value = optn;
+//         select.appendChild(element);
+
+
+//     }
+// }
 
 // function chooseEmployee(e) {
 //     e.preventDefault();
@@ -213,6 +221,16 @@ function updateEmployee(e) {
 }
 
 
+function showSelectedDelete(e) {
+    e.preventDefault();
+    let employeeToDelete = document.getElementById("selectToDelete").value;
+    document.getElementById("messageDelete").innerHTML = "Employee selected: " + employeeToDelete;
+}
+
+
+function deleteEmployee(e) {
+    e.preventDefault();
+}
 
 
 //document.getElementById("ninEdit").placeholder = placeholdername;
