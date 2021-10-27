@@ -10,29 +10,62 @@
 </head>
 
 <body>
-    <!-- form?-->
+
     <h1>Employee Information</h1>
+    <form id="form-view">
+
+        <fieldset>
+            <legend> Employee Information Options </legend>
+            <button id="view-Btn" type="button"> View Employee Information </button>
+
+            <!-- description when hover? - -don't forget alt for images
+            
+            <button id="edit-Btn"> Update Existing Employee Information</button>
+            <button id="delete-Btn"> Delete Existing Employee </button> -->
+        </fieldset>
+    </form>
+
+    <form id="form-add">
+        <fieldset>
+            <legend> Add a new employee </legend>
 
 
-    <label for="nin"> National Insurance Number (NIN)</label>
-    <input type="text" id="nin">
 
-    <label for="name"> Full Name </label>
-    <input type="text" id="name">
+            <label for="nin"> National Insurance Number (NIN)</label>
+            <input type="text" id="nin" placeholder="Enter NIN here...">
 
-    <label for="phone"> Phone Number</label>
-    <input type="tel" id="phone">
+            <label for="name"> Full Name </label>
+            <input type="text" id="name" placeholder="Enter full name here...">
 
-    <label for="address"> Address</label>
-    <input type="text" id="address">
+            <label for="phone"> Phone Number</label>
+            <input type="tel" id="phone" placeholder="Enter phone number here...">
 
-    <label for="department"> Choose a department: </label>
-    <select name="department" id="department">
-        <option value="hr"> HR </option>
-        <option value="sales"> Sales </option>
-        <option value="it"> IT </option>
-        <option value="other"> Other </option>
-    </select>
+            <label for="address"> Address</label>
+            <input type="text" id="address" placeholder="Enter address here...">
+
+            <label for="department"> Choose a department: </label>
+            <select name="department" id="department">
+                <option value="hr"> HR </option>
+                <option value="sales"> Sales </option>
+                <option value="it"> IT </option>
+                <option value="other"> Other </option>
+            </select>
+            <button type="button" id="add-Btn"> Add </button>
+            </br>
+            <button type="submit" value="submit" id="submit"> Submit </button>
+
+        </fieldset>
+    </form>
+
+
+
+
+
+
+
+    <!-- <form method="post" action="QaProject.js">
+
+    </form> -->
 
     <div>
         <p id="para" class="test"> </p>

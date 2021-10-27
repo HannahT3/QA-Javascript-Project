@@ -101,35 +101,63 @@ let employeeInfo =
 
 
     ];
-console.log(employeeInfo[0]);
-
-//console.log(employeeInfo[0]);
-/*let ninum = 343433;
-
-let name = "fullname";
-
-let phoneNum = 123213;
-
-let myAddress = "myAddress";
-
-let dep = "HR"; */
 
 
 
-/*
-function addNewEmployee(ninum, name, phoneNum, myAddress, dep) {
-    employeeInfo.push({ "ninumber": ninum, "fullname": name, "phone": phoneNum, "address": myAddress, "department": dep });
+
+
+
+
+
+
+let viewBtn = document.querySelector("#view-Btn");
+let addBtn = document.querySelector("#add-Btn");
+
+const formView = document.getElementById('form-view');
+const formAdd = document.getElementById('form-add');
+
+viewBtn.addEventListener("click", viewEmployees);
+
+
+formAdd.addEventListener("submit", addNewEmployee);
+
+
+
+console.log(employeeInfo);
+
+
+function addNewEmployee(e) {
+    e.preventDefault();
+    let niInput = document.getElementById("nin").value;
+    let fullNameInput = document.getElementById("name").value;
+    let phoneNumberInput = document.getElementById("phone").value;
+    let addressInput = document.getElementById("address").value;
+    let depInput = document.getElementById("department").value;
+    const newEmployee = { "ninumber": niInput, "fullname": fullNameInput, "phone": phoneNumberInput, "address": addressInput, "department": depInput };
+    console.log(newEmployee);
+    employeeInfo.push(newEmployee);
     console.log(employeeInfo);
-    return employeeInfo;
-} */
+
+}
+
+//new form set new numbers by id, pass in for index - overwriteg
+
+
+// formView.addEventListener("submit", (e) => {
+//     e.preventDefault();
+
+// })
+
+
+
+console.log(employeeInfo);
+
+
+
 
 
 //SEE DOMS FOR EXAMPLES --- Create a table
 function viewEmployees() {
-
-    // let str = JSON.stringify(employeeInfo[1]);
-    // console.log(str);
-
 
 
     // creating a table
@@ -146,15 +174,13 @@ function viewEmployees() {
     }
 
 
-
-
     // create html table header row using extracted headers
 
     let tableRow = table.insertRow(-1); //table row
     for (let i = 0; i < col.length; i++) {
         let tableHeader = document.createElement("th") //table header
         tableHeader.innerHTML = col[i];
-        tableRow.appendChild(th);
+        tableRow.appendChild(tableHeader);
     }
 
     //add data to the table
@@ -173,7 +199,24 @@ function viewEmployees() {
     divContainer.appendChild(table);
 
 }
-viewEmployees();
+
+
+
+// let a = "SW34983948";
+// let b = "My Name";
+// let c = "079999999";
+// let d = "My address";
+// let e = "HR";
+// addNewEmployee(a, b, c, d, e);
+
+
+//Event listening, bubbling
+
+
+//console.log(employeeInfo.ninumber);
+
+
+
 
 
 
