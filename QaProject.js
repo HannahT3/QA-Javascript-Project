@@ -112,6 +112,7 @@ let employeeInfo =
 
 let viewBtn = document.querySelector("#view-Btn");
 //let addBtn = document.querySelector("#add-Btn");
+let editBtn = document.getElementById("submit2");
 
 const formView = document.getElementById('form-view');
 const formAdd = document.getElementById('form-add');
@@ -123,8 +124,13 @@ viewBtn.addEventListener("click", viewEmployees);
 formAdd.addEventListener("submit", addNewEmployee);
 formEdit.addEventListener("submit", editEmployee);
 
+
+
+
 let dropdown = document.getElementById('updateDrop');
 dropdown.addEventListener("click", employeeSelect);
+
+editBtn.addEventListener("click", updateEmployee);
 
 
 
@@ -180,10 +186,30 @@ function editEmployee(e) {
             document.getElementById("phoneEdit").placeholder = employeeInfo[j]["phone"];
             document.getElementById("addressEdit").placeholder = employeeInfo[j]["address"];
             document.getElementById("departmentEdit").placeholder = employeeInfo[j]["department"];
+
+
         }
 
     }
 
+}
+
+function updateEmployee(e) {
+    e.preventDefault();
+    let selectedEmployee = document.getElementById("select").value;
+    for (let k = 0; k < employeeInfo.length; k++) {
+        if (selectedEmployee == employeeInfo[k]["fullname"]) {
+
+            let niEdit = document.getElementById("ninEdit").value;
+            let fullNameEdit = document.getElementById("nameEdit").value;
+            let phoneNumberEdit = document.getElementById("phoneEdit").value;
+            let addEdit = document.getElementById("addressEdit").value;
+            let depEdit = document.getElementById("departmentEdit").value;
+
+            employeeInfo[k] = { "ninumber": niEdit, "fullname": fullNameEdit, "phone": phoneNumberEdit, "address": addEdit, "department": depEdit };
+            console.log(employeeInfo);
+        }
+    }
 }
 
 
