@@ -111,7 +111,7 @@ let employeeInfo =
 
 
 let viewBtn = document.querySelector("#view-Btn");
-let addBtn = document.querySelector("#add-Btn");
+//let addBtn = document.querySelector("#add-Btn");
 
 const formView = document.getElementById('form-view');
 const formAdd = document.getElementById('form-add');
@@ -121,9 +121,14 @@ viewBtn.addEventListener("click", viewEmployees);
 
 formAdd.addEventListener("submit", addNewEmployee);
 
+let dropdown = document.getElementById('updateDrop');
+dropdown.addEventListener("click", employeeSelect);
+
+
 
 
 console.log(employeeInfo);
+
 
 
 function addNewEmployee(e) {
@@ -140,6 +145,25 @@ function addNewEmployee(e) {
 
 }
 
+function employeeSelect() {
+
+    for (var i = 0; i < employeeInfo.length; i++) {
+        let optn = employeeInfo[i]["fullname"];
+        let el = document.createElement("option");
+        el.textContent = optn;
+        el.value = optn;
+        select.appendChild(el);
+
+
+    }
+}
+
+
+
+
+// function updateEmployee(e) {
+//     e.preventDefault
+// }
 //new form set new numbers by id, pass in for index - overwriteg
 
 

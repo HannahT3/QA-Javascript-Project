@@ -29,8 +29,49 @@
         <fieldset>
             <legend> Add a new employee </legend>
 
+            <!-- Reset employee info (add button to clear screen)-->
 
+            <label for="nin"> National Insurance Number (NIN)</label>
+            <input type="text" id="nin" placeholder="Enter NIN here...">
 
+            <label for="name"> Full Name </label>
+            <input type="text" id="name" placeholder="Enter full name here...">
+
+            <label for="phone"> Phone Number</label>
+            <input type="tel" id="phone" placeholder="Enter phone number here...">
+
+            <label for="address"> Address</label>
+            <input type="text" id="address" placeholder="Enter address here...">
+
+            <label for="department"> Choose a department: </label>
+            <select name="department" id="department">
+                <option value="hr"> HR </option>
+                <option value="sales"> Sales </option>
+                <option value="it"> IT </option>
+                <option value="other"> Other </option>
+            </select>
+
+            </br>
+            <button type="submit" value="submit" id="submit"> Submit </button>
+
+        </fieldset>
+    </form>
+
+    <form id="form-edit">
+        <fieldset>
+            <legend> Edit an Existing Employee </legend>
+
+            <label for="select"> Choose employee you wish to edit: </label>
+            <select name="select" id="select">
+                <option value=""> Select Employee Name</option>
+            </select>
+
+            </br>
+            <label for="updateDrop"> Click here to update dropdown options: </label>
+            <button id="updateDrop" type="button"> Update Dropdown Box </button>
+
+            <p id="msg"></p>
+            <!--
             <label for="nin"> National Insurance Number (NIN)</label>
             <input type="text" id="nin" placeholder="Enter NIN here...">
 
@@ -52,7 +93,7 @@
             </select>
             <button type="button" id="add-Btn"> Add </button>
             </br>
-            <button type="submit" value="submit" id="submit"> Submit </button>
+            <button type="submit" value="submit" id="submit"> Submit </button> -->
 
         </fieldset>
     </form>
