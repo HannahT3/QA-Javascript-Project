@@ -100,11 +100,12 @@
         </fieldset>
     </form>
 
+
     <form id="form-delete">
         <fieldset>
             <legend> Delete an Existing Employee </legend>
 
-            <label for="dropboxDelete"> Click here to update dropdown options: </label>
+            <!-- <label for="dropboxDelete"> Click here to update dropdown options: </label>
             <button id="dropboxDelete" type="button"> Update Dropdown Box </button>
 
             </br>
@@ -112,14 +113,19 @@
             <label for="selectToDelete"> Choose employee you wish to delete: </label>
             <select name="selectToDelete" id="selectToDelete">
                 <option value=""> Select Employee Name</option>
-            </select>
+            </select> -->
 
-            <button type="submit" value="submitDelete" id="submitDelete"> Submit Employee Choice </button>
+            <label for="deleteInput"> Please enter the National Insurance Number (NIN) of the employee you wish to
+                delete: </label>
+            <input type="text" id="deleteInput">
+
+            <button type="button" id="employeeSelect"> Submit Employee Choice </button>
+
 
             </br>
             <p id="messageDelete"></p>
 
-            <button type="button" id="delete"> Delete Employee </button>
+            <button type="submit" id="delete"> Delete Employee </button>
         </fieldset>
     </form>
 

@@ -122,13 +122,15 @@ dropdown.addEventListener("click", employeeSelect);
 editBtn.addEventListener("click", updateEmployee);
 
 //Deleting employee info
-let deleteBtn = document.getElementById("delete");
+let chosenEmployee = document.getElementById("employeeSelect");
+//let deleteBtn = document.getElementById("delete");
 const formDelete = document.getElementById('form-delete');
-let updateDeleteDrop = document.getElementById('dropboxDelete');
+// let updateDeleteDrop = document.getElementById('dropboxDelete');
 
-updateDeleteDrop.addEventListener("click", employeeSelect);
-formDelete.addEventListener("submit", showSelectedDelete);
-deleteBtn.addEventListener("click", deleteEmployee);
+chosenEmployee.addEventListener("click", showSelectedDelete);
+formDelete.addEventListener("submit", deleteEmployee);
+// updateDeleteDrop.addEventListener("click", employeeSelectDelete);
+// deleteBtn.addEventListener("click", deleteEmployee);
 
 console.log(employeeInfo);
 
@@ -164,11 +166,11 @@ function employeeSelect() {
 // function employeeSelectDelete() {
 
 //     for (let z = 0; z < employeeInfo.length; z++) {
-//         let optn = employeeInfo[z]["fullname"];
-//         let element = document.createElement("option");
-//         element.textContent = optn;
-//         element.value = optn;
-//         select.appendChild(element);
+//         let optn2 = employeeInfo[z]["fullname"];
+//         let element2 = document.createElement("option");
+//         element2.textContent = optn2;
+//         element2.value = optn2;
+//         select.appendChild(element2);
 
 
 //     }
@@ -186,7 +188,7 @@ function editEmployee(e) {
     e.preventDefault();
     let selectedEmployee = document.getElementById("select").value;
     document.getElementById("message").innerHTML = "Employee selected: " + selectedEmployee;
-    // document.getElementById("nameEdit").placeholder = selectedEmployee;
+    document.getElementById("nameEdit").placeholder = selectedEmployee;
     for (let j = 0; j < employeeInfo.length; j++) {
         if (selectedEmployee == employeeInfo[j]["fullname"]) {
             document.getElementById("ninEdit").value = employeeInfo[j]["ninumber"];
@@ -221,24 +223,33 @@ function updateEmployee(e) {
 }
 
 
+
 function showSelectedDelete(e) {
     e.preventDefault();
-    let employeeToDelete = document.getElementById("selectToDelete").value;
-    document.getElementById("messageDelete").innerHTML = "Employee selected: " + employeeToDelete;
-}
+    let employeeToDelete = document.getElementById("deleteInput").value;
+    for (let l = 0; l < employeeInfo.length; l++) {
+        if (employeeToDelete == employeeInfo[l]["ninumber"]) {
+            document.getElementById("messageDelete").innerHTML = "Employee NIN: " + employeeToDelete + "<br/>" + "Employee Name: " + employeeInfo[l]["fullname"];
+        }
 
+
+    }
+
+}
+//try//catch
 
 function deleteEmployee(e) {
     e.preventDefault();
-    let employeeToDelete = document.getElementById("selectToDelete").value;
+    let employeeToDelete = document.getElementById("deleteInput").value;
     for (let l = 0; l < employeeInfo.length; l++) {
-        if (employeeToDelete == employeeInfo[l]["fullname"]) {
+        if (employeeToDelete == employeeInfo[l]["ninumber"]) {
             delete employeeInfo[l];
         }
 
     }
 }
 
+//splice, delete sets to null w3schools/ stack overflow 
 
 //document.getElementById("ninEdit").placeholder = placeholdername;
 
