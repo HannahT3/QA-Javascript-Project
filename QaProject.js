@@ -111,19 +111,32 @@ let employeeInfo =
 
 
 let viewBtn = document.querySelector("#view-Btn");
-let addBtn = document.querySelector("#add-Btn");
+//let addBtn = document.querySelector("#add-Btn");
+let editBtn = document.getElementById("submit2");
 
 const formView = document.getElementById('form-view');
 const formAdd = document.getElementById('form-add');
+const formEdit = document.getElementById('form-edit');
 
 viewBtn.addEventListener("click", viewEmployees);
 
 
 formAdd.addEventListener("submit", addNewEmployee);
+formEdit.addEventListener("submit", editEmployee);
+
+
+
+
+let dropdown = document.getElementById('updateDrop');
+dropdown.addEventListener("click", employeeSelect);
+
+editBtn.addEventListener("click", updateEmployee);
+
 
 
 
 console.log(employeeInfo);
+
 
 
 function addNewEmployee(e) {
@@ -140,6 +153,73 @@ function addNewEmployee(e) {
 
 }
 
+function employeeSelect() {
+
+    for (let i = 0; i < employeeInfo.length; i++) {
+        let optn = employeeInfo[i]["fullname"];
+        let element = document.createElement("option");
+        element.textContent = optn;
+        element.value = optn;
+        select.appendChild(element);
+
+
+    }
+}
+
+// function chooseEmployee(e) {
+//     e.preventDefault();
+//     let selectedEmployee = document.getElementById("select").value;
+//     document.getElementById("message").innerHTML = "Employee selected: " + selectedEmployee;
+//     document.getElementById("nameEdit").placeholder = selectedEmployee;
+
+// }
+
+function editEmployee(e) {
+    e.preventDefault();
+    let selectedEmployee = document.getElementById("select").value;
+    document.getElementById("message").innerHTML = "Employee selected: " + selectedEmployee;
+    // document.getElementById("nameEdit").placeholder = selectedEmployee;
+    for (let j = 0; j < employeeInfo.length; j++) {
+        if (selectedEmployee == employeeInfo[j]["fullname"]) {
+            document.getElementById("ninEdit").value = employeeInfo[j]["ninumber"];
+            document.getElementById("nameEdit").value = employeeInfo[j]["fullname"];
+            document.getElementById("phoneEdit").value = employeeInfo[j]["phone"];
+            document.getElementById("addressEdit").value = employeeInfo[j]["address"];
+            document.getElementById("departmentEdit").value = employeeInfo[j]["department"];
+
+
+        }
+
+    }
+
+}
+
+function updateEmployee(e) {
+    e.preventDefault();
+    let selectedEmployee = document.getElementById("select").value;
+    for (let k = 0; k < employeeInfo.length; k++) {
+        if (selectedEmployee == employeeInfo[k]["fullname"]) {
+
+            let niEdit = document.getElementById("ninEdit").value;
+            let fullNameEdit = document.getElementById("nameEdit").value;
+            let phoneNumberEdit = document.getElementById("phoneEdit").value;
+            let addEdit = document.getElementById("addressEdit").value;
+            let depEdit = document.getElementById("departmentEdit").value;
+
+            employeeInfo[k] = { "ninumber": niEdit, "fullname": fullNameEdit, "phone": phoneNumberEdit, "address": addEdit, "department": depEdit };
+            console.log(employeeInfo);
+        }
+    }
+}
+
+
+
+
+//document.getElementById("ninEdit").placeholder = placeholdername;
+
+// function updateEmployee(e) {
+//     e.preventDefault
+// }
 //new form set new numbers by id, pass in for index - overwriteg
 
 
