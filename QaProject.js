@@ -181,11 +181,11 @@ function editEmployee(e) {
     // document.getElementById("nameEdit").placeholder = selectedEmployee;
     for (let j = 0; j < employeeInfo.length; j++) {
         if (selectedEmployee == employeeInfo[j]["fullname"]) {
-            document.getElementById("ninEdit").placeholder = employeeInfo[j]["ninumber"];
-            document.getElementById("nameEdit").placeholder = employeeInfo[j]["fullname"];
-            document.getElementById("phoneEdit").placeholder = employeeInfo[j]["phone"];
-            document.getElementById("addressEdit").placeholder = employeeInfo[j]["address"];
-            document.getElementById("departmentEdit").placeholder = employeeInfo[j]["department"];
+            document.getElementById("ninEdit").value = employeeInfo[j]["ninumber"];
+            document.getElementById("nameEdit").value = employeeInfo[j]["fullname"];
+            document.getElementById("phoneEdit").value = employeeInfo[j]["phone"];
+            document.getElementById("addressEdit").value = employeeInfo[j]["address"];
+            document.getElementById("departmentEdit").value = employeeInfo[j]["department"];
 
 
         }
