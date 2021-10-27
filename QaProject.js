@@ -107,11 +107,11 @@ let employeeInfo =
 
 
 
-let niInput = document.getElementById("nin").value;
-let fullNameInput = document.getElementById("name").value;
-let phoneNumberInput = document.getElementById("phone").value;
-let addressInput = document.getElementById("address").value;
-let depInput = document.getElementById("department").value;
+// let niInput = document.getElementById("nin").value;
+// let fullNameInput = document.getElementById("name").value;
+// let phoneNumberInput = document.getElementById("phone").value;
+// let addressInput = document.getElementById("address").value;
+// let depInput = document.getElementById("department").value;
 
 // let newEmployee = { "ninumber": niInput, "fullname": fullNameInput, "phone": phoneNumberInput, "address": addressInput, "department": depInput };
 
@@ -123,13 +123,11 @@ const formView = document.getElementById('form-view');
 const formAdd = document.getElementById('form-add');
 
 viewBtn.addEventListener("click", viewEmployees);
-addBtn.addEventListener("click", function () {
-    addNewEmployee(niInput, fullNameInput, phoneNumberInput, addressInput, depInput)
-});
+// addBtn.addEventListener("click", function () {
+//     addNewEmployee(niInput, fullNameInput, phoneNumberInput, addressInput, depInput)
+// });
 
-formAdd.addEventListener("submit", (e) => {
-    e.preventDefault();
-})
+formAdd.addEventListener("submit", addNewEmployee);
 
 console.log(employeeInfo);
 
@@ -146,7 +144,13 @@ console.log(employeeInfo);
 
 // }
 
-function addNewEmployee(niInput, fullNameInput, phoneNumberInput, addressInput, depInput) {
+function addNewEmployee(e) {
+    e.preventDefault();
+    let niInput = document.getElementById("nin").value;
+    let fullNameInput = document.getElementById("name").value;
+    let phoneNumberInput = document.getElementById("phone").value;
+    let addressInput = document.getElementById("address").value;
+    let depInput = document.getElementById("department").value;
     const newEmployee = { "ninumber": niInput, "fullname": fullNameInput, "phone": phoneNumberInput, "address": addressInput, "department": depInput };
     console.log(newEmployee);
     employeeInfo.push(newEmployee);
@@ -154,6 +158,7 @@ function addNewEmployee(niInput, fullNameInput, phoneNumberInput, addressInput, 
 
 }
 
+//new form set new numbers by id, pass in for index - overwrite
 
 
 // formView.addEventListener("submit", (e) => {
