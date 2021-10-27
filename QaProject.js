@@ -113,20 +113,60 @@ let phoneNumberInput = document.getElementById("phone").value;
 let addressInput = document.getElementById("address").value;
 let depInput = document.getElementById("department").value;
 
+// let newEmployee = { "ninumber": niInput, "fullname": fullNameInput, "phone": phoneNumberInput, "address": addressInput, "department": depInput };
 
 
+let viewBtn = document.querySelector("#view-Btn");
+let addBtn = document.querySelector("#add-Btn");
 
-function addNewEmployee(ninum, fName, phoneNum, myAddress, dep) {
+const formView = document.getElementById('form-view');
+const formAdd = document.getElementById('form-add');
 
-    employeeInfo.push({ "ninumber": ninum, "fullname": fName, "phone": phoneNum, "address": myAddress, "department": dep });
+viewBtn.addEventListener("click", viewEmployees);
+addBtn.addEventListener("click", function () {
+    addNewEmployee(niInput, fullNameInput, phoneNumberInput, addressInput, depInput)
+});
+
+formAdd.addEventListener("submit", (e) => {
+    e.preventDefault();
+})
+
+console.log(employeeInfo);
+
+// function addNewEmployee() {
+
+//     let newEmployee = { "ninumber": niInput, "fullname": fullNameInput, "phone": phoneNumberInput, "address": addressInput, "department": depInput };
+//     employeeInfo.push(newEmployee);
+//     console.log(employeeInfo);
+
+// }
+// function addNewEmployee(newEmployee) {
+//     employeeInfo.push(newEmployee);
+//     console.log(employeeInfo);
+
+// }
+
+function addNewEmployee(niInput, fullNameInput, phoneNumberInput, addressInput, depInput) {
+    const newEmployee = { "ninumber": niInput, "fullname": fullNameInput, "phone": phoneNumberInput, "address": addressInput, "department": depInput };
+    console.log(newEmployee);
+    employeeInfo.push(newEmployee);
     console.log(employeeInfo);
 
 }
 
 
 
-let viewBtn = document.querySelector("#view-Btn");
-let addBtn = document.querySelector("#add-Btn");
+// formView.addEventListener("submit", (e) => {
+//     e.preventDefault();
+
+// })
+
+
+
+console.log(employeeInfo);
+
+
+
 
 
 //SEE DOMS FOR EXAMPLES --- Create a table
@@ -184,22 +224,6 @@ function viewEmployees() {
 
 
 //Event listening, bubbling
-viewBtn.addEventListener("click", viewEmployees);
-
-
-
-
-addBtn.addEventListener("click", addNewEmployee(niInput, fullNameInput, phoneNumberInput, addressInput, depInput));
-
-console.log(employeeInfo);
-
-const form = document.getElementById('form');
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-})
-
-console.log(employeeInfo);
 
 
 //console.log(employeeInfo.ninumber);
