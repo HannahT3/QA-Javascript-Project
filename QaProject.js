@@ -104,36 +104,35 @@ let employeeInfo =
 
 
 
-
-
-
-
-
-
-let viewBtn = document.querySelector("#view-Btn");
-//let addBtn = document.querySelector("#add-Btn");
-let editBtn = document.getElementById("submit2");
-
+//Viewing employee info
+let viewBtn = document.getElementById("view-Btn");
 const formView = document.getElementById('form-view');
-const formAdd = document.getElementById('form-add');
-const formEdit = document.getElementById('form-edit');
-
 viewBtn.addEventListener("click", viewEmployees);
+let clearBtn = document.getElementById("clear-Btn");
+clearBtn.addEventListener("click", clearEmployeeInfo);
 
-
+//Adding employee info
+const formAdd = document.getElementById('form-add');
 formAdd.addEventListener("submit", addNewEmployee);
-formEdit.addEventListener("submit", editEmployee);
 
-
-
-
+//Editing employee info
+let editBtn = document.getElementById("submitEdit2");
+const formEdit = document.getElementById('form-edit');
 let dropdown = document.getElementById('updateDrop');
+formEdit.addEventListener("submit", editEmployee);
 dropdown.addEventListener("click", employeeSelect);
-
 editBtn.addEventListener("click", updateEmployee);
 
+//Deleting employee info
+let chosenEmployee = document.getElementById("employeeSelect");
+//let deleteBtn = document.getElementById("delete");
+const formDelete = document.getElementById('form-delete');
+// let updateDeleteDrop = document.getElementById('dropboxDelete');
 
-
+chosenEmployee.addEventListener("click", showSelectedDelete);
+formDelete.addEventListener("submit", deleteEmployee);
+// updateDeleteDrop.addEventListener("click", employeeSelectDelete);
+// deleteBtn.addEventListener("click", deleteEmployee);
 
 console.log(employeeInfo);
 
@@ -166,6 +165,19 @@ function employeeSelect() {
     }
 }
 
+// function employeeSelectDelete() {
+
+//     for (let z = 0; z < employeeInfo.length; z++) {
+//         let optn2 = employeeInfo[z]["fullname"];
+//         let element2 = document.createElement("option");
+//         element2.textContent = optn2;
+//         element2.value = optn2;
+//         select.appendChild(element2);
+
+
+//     }
+// }
+
 // function chooseEmployee(e) {
 //     e.preventDefault();
 //     let selectedEmployee = document.getElementById("select").value;
@@ -178,7 +190,7 @@ function editEmployee(e) {
     e.preventDefault();
     let selectedEmployee = document.getElementById("select").value;
     document.getElementById("message").innerHTML = "Employee selected: " + selectedEmployee;
-    // document.getElementById("nameEdit").placeholder = selectedEmployee;
+    document.getElementById("nameEdit").placeholder = selectedEmployee;
     for (let j = 0; j < employeeInfo.length; j++) {
         if (selectedEmployee == employeeInfo[j]["fullname"]) {
             document.getElementById("ninEdit").value = employeeInfo[j]["ninumber"];
@@ -214,6 +226,36 @@ function updateEmployee(e) {
 
 
 
+function showSelectedDelete(e) {
+    e.preventDefault();
+    let employeeToDelete = document.getElementById("deleteInput").value;
+    for (let l = 0; l < employeeInfo.length; l++) {
+        if (employeeToDelete == employeeInfo[l]["ninumber"]) {
+            document.getElementById("messageDelete").innerHTML = "Employee NIN: " + employeeToDelete + "<br/>" + "Employee Name: " + employeeInfo[l]["fullname"];
+        }
+
+
+    }
+
+}
+//try//catch
+
+function deleteEmployee(e) {
+    e.preventDefault();
+    let employeeToDelete = document.getElementById("deleteInput").value;
+    for (let l = 0; l < employeeInfo.length; l++) {
+        if (employeeToDelete == employeeInfo[l]["ninumber"]) {
+            // delete employeeInfo[l];
+            let position = employeeInfo[l].indexOf;
+            employeeInfo.splice(position, 1);
+        }
+
+    }
+
+    console.log(employeeInfo);
+}
+
+//splice, delete sets to null w3schools/ stack overflow 
 
 //document.getElementById("ninEdit").placeholder = placeholdername;
 
@@ -280,7 +322,10 @@ function viewEmployees() {
 
 }
 
-
+function clearEmployeeInfo() {
+    let tableContainer = document.getElementById("para");
+    tableContainer.innerHTML = "";
+}
 
 // let a = "SW34983948";
 // let b = "My Name";
