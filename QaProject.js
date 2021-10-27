@@ -115,11 +115,13 @@ let viewBtn = document.querySelector("#view-Btn");
 
 const formView = document.getElementById('form-view');
 const formAdd = document.getElementById('form-add');
+const formEdit = document.getElementById('form-edit');
 
 viewBtn.addEventListener("click", viewEmployees);
 
 
 formAdd.addEventListener("submit", addNewEmployee);
+formEdit.addEventListener("submit", editEmployee);
 
 let dropdown = document.getElementById('updateDrop');
 dropdown.addEventListener("click", employeeSelect);
@@ -149,13 +151,21 @@ function employeeSelect() {
 
     for (var i = 0; i < employeeInfo.length; i++) {
         let optn = employeeInfo[i]["fullname"];
-        let el = document.createElement("option");
-        el.textContent = optn;
-        el.value = optn;
-        select.appendChild(el);
+        let element = document.createElement("option");
+        element.textContent = optn;
+        element.value = optn;
+        select.appendChild(element);
 
 
     }
+}
+
+function editEmployee(e) {
+    e.preventDefault();
+    let selectedEmployee = document.getElementById("select").value;
+    document.getElementById("message").innerHTML = "Selected: " + selectedEmployee;
+    // msg.innerHTML = "Selected: " + + selectedEmployee;
+
 }
 
 
