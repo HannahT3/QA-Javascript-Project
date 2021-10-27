@@ -246,8 +246,9 @@ function deleteEmployee(e) {
     for (let l = 0; l < employeeInfo.length; l++) {
         if (employeeToDelete == employeeInfo[l]["ninumber"]) {
             // delete employeeInfo[l];
-            let position = employeeInfo[l].indexOf;
-            employeeInfo.splice(position, 1);
+            // let position = employeeInfo[l].indexOf;
+            // console.log(position);
+            employeeInfo.splice(l, 1);
         }
 
     }
