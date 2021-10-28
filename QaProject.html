@@ -13,25 +13,29 @@
 <body>
 
     <h1>Employee Information</h1>
-    <form id="form-view">
 
-        <fieldset>
+    <div class="view">
+        <form id="form-view">
+
+
             <legend> Employee Information Options </legend>
             <h2> Employee View </h2>
 
-            <p id="para" class="test"> </p>
+            <p id="para" class="table"> </p>
 
-            <button id="view-Btn" type="button"> View Employee Information </button>
+            <button id="view-Btn" type="button" class="button"> View Employee Information </button>
             <button id="clear-Btn" type="button"> Clear Employee Information </button>
             <!-- description when hover? - -don't forget alt for images
             
             <button id="edit-Btn"> Update Existing Employee Information</button>
             <button id="delete-Btn"> Delete Existing Employee </button> -->
-        </fieldset>
-    </form>
 
-    <form id="form-add">
-        <fieldset>
+        </form>
+    </div>
+
+    <div class="add">
+        <form id="form-add">
+
             <legend> Add a new employee </legend>
 
             <!-- Reset employee info (add button to clear screen)-->
@@ -63,11 +67,13 @@
             </br>
             <button type="submit" value="submit" id="submitAdd"> Submit </button>
 
-        </fieldset>
-    </form>
 
-    <form id="form-edit">
-        <fieldset>
+        </form>
+    </div>
+
+    <div class="edit">
+        <form id="form-edit">
+
             <legend> Edit an Existing Employee </legend>
 
             <label for="updateDrop"> Click here to update dropdown options: </label>
@@ -106,12 +112,13 @@
             </br>
             <button type="button" id="submitEdit2"> Submit </button>
 
-        </fieldset>
-    </form>
 
+        </form>
+    </div>
 
-    <form id="form-delete">
-        <fieldset>
+    <div class="delete">
+        <form id="form-delete">
+
             <legend> Delete an Existing Employee </legend>
 
             <!-- <label for="dropboxDelete"> Click here to update dropdown options: </label>
@@ -135,18 +142,20 @@
             <p id="messageDelete"></p>
 
             <button type="submit" id="delete"> Delete Employee </button>
-        </fieldset>
-    </form>
 
-    <form id="form-filter">
-        <fieldset>
+        </form>
+    </div>
+
+    <div class="filter">
+        <form id="form-filter">
+
             <legend> Filter by department </legend>
 
 
             <label for="filterInput"> Please enter the department you wish to view: </label>
             <input type="text" id="filterInput">
 
-            <button type="button" id="filterSelect"> Click to enter </button>
+            <button type="button" id="filterSelect" class="filterButton"> Click to enter </button>
 
 
             </br>
@@ -159,14 +168,14 @@
 
             <button type="submit" id="filter"> Filter Employee Info </button>
             <button type="button" id="clearFilter"> Clear Filtered Employee Info </button>
-        </fieldset>
-    </form>
 
-    <div>
-
-        <!-- <p id="messageFilter"></p> -->
-
+        </form>
     </div>
+    <!-- <div>
+
+        <p id="messageFilter"></p> 
+
+    </div> -->
 
     <!-- <ul class="employee-info"></ul> -->
 
