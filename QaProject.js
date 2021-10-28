@@ -134,6 +134,17 @@ formDelete.addEventListener("submit", deleteEmployee);
 // updateDeleteDrop.addEventListener("click", employeeSelectDelete);
 // deleteBtn.addEventListener("click", deleteEmployee);
 
+
+//Filtering employee info
+let chosenDepartment = document.getElementById("filterSelect");
+let formFilter = document.getElementById("filter");
+clearFilterBtn = document.getElementById("clearFilter");
+
+chosenDepartment.addEventListener("click", showSelectedFilter);
+document.addEventListener("submit", filterByDepartment); //why does this work?
+clearFilterBtn.addEventListener("click", clearFilteredEmployees);
+
+
 console.log(employeeInfo);
 
 
@@ -229,6 +240,7 @@ function updateEmployee(e) {
 function showSelectedDelete(e) {
     e.preventDefault();
     let employeeToDelete = document.getElementById("deleteInput").value;
+    console.log(employeeToDelete.type);
     for (let l = 0; l < employeeInfo.length; l++) {
         if (employeeToDelete == employeeInfo[l]["ninumber"]) {
             document.getElementById("messageDelete").innerHTML = "Employee NIN: " + employeeToDelete + "<br/>" + "Employee Name: " + employeeInfo[l]["fullname"];
@@ -240,14 +252,118 @@ function showSelectedDelete(e) {
 }
 //try//catch
 
+
+function showSelectedFilter(e) {
+    e.preventDefault();
+    let departmentToFilter = document.getElementById("filterInput").value;
+    document.getElementById("messageFilter").innerHTML = "Department: " + departmentToFilter;
+    // for (let l = 0; l < employeeInfo.length; l++) {
+    //     if (departmentToFilter == employeeInfo[l]["department"]) {
+    //         document.getElementById("messageDelete").innerHTML = "Employee NIN: " + departmentToFilter + "<br/>" + "Employee Name: " + employeeInfo[l]["fullname"];
+    //     }
+
+
+    // }
+
+}
+
+function filterByDepartment(e) {
+    e.preventDefault();
+    let departmentToFilter = document.getElementById("filterInput").value;
+    let newArray = [];
+    for (let l = 0; l < employeeInfo.length; l++) {
+
+        if (departmentToFilter == employeeInfo[l]["department"]) {
+
+            //add the employees of given department to a JSON array
+            const Employee = { "ninumber": employeeInfo[l]["ninumber"], "fullname": employeeInfo[l]["fullname"], "phone": employeeInfo[l]["phone"], "address": employeeInfo[l]["address"], "department": employeeInfo[l]["department"] };
+            newArray.push(Employee);
+
+            // let listEmp = document.getElementById("filteredEmployees"); //table header
+            // listEmp.innerHTML = "";
+            // listEmp.appendChild(newArray);
+            //     document.getElementById("filteredEmployees").innerHTML = "Employee Name: " + employeeInfo[l]["fullname"] + "<br/>" + "Department: " + employeeInfo[l]["department"];
+
+
+
+            // let listEmp = document.getElementById("filteredEmployees"); //table header
+            // listEmp.innerHTML = newArray;
+
+        }
+
+
+
+
+
+
+    }
+    console.log(newArray);
+    //document.getElementById("filteredEmployees").innerHTML = newArray;
+    // let output = "";
+    // for (let m = 0; m < newArray.length; m++) {
+    //     output += "NIN: " + newArray[m]["ninumber"] + "Full Name: " + newArray[m]["fullname"] + " Phone number: " + newArray[m]["phone"] + "Address: " + newArray[m]["address"] + "Department: " + newArray[m]["department"];
+
+
+    //ocument.getElementById("filteredEmployees").innerHTML = output;
+
+    // creating a table
+    let table = document.createElement("table");
+
+    //Gets header values
+    let col = [];
+    for (let i = 0; i < newArray.length; i++) {
+        for (let key in newArray[i]) {
+            if (col.indexOf(key) === -1) {
+                col.push(key);
+            }
+        }
+    }
+
+
+    // create html table header row using extracted headers
+
+    let tableRow = table.insertRow(-1); //table row
+    for (let i = 0; i < col.length; i++) {
+        let tableHeader = document.createElement("th") //table header
+        tableHeader.innerHTML = col[i];
+        tableRow.appendChild(tableHeader);
+    }
+
+    //add data to the table
+    for (let i = 0; i < newArray.length; i++) {
+        tableRow = table.insertRow(-1);
+
+        for (let j = 0; j < col.length; j++) {
+            let tabCell = tableRow.insertCell(-1);
+            tabCell.innerHTML = newArray[i][col[j]];
+        }
+    }
+
+    //add table to container
+    let divContainer = document.getElementById("filteredEmployees");
+    divContainer.innerHTML = "";
+    divContainer.appendChild(table);
+
+}
+
+function clearFilteredEmployees() {
+    let container = document.getElementById("filteredEmployees");
+    container.innerHTML = "";
+}
+
+
+
+
+
 function deleteEmployee(e) {
     e.preventDefault();
     let employeeToDelete = document.getElementById("deleteInput").value;
     for (let l = 0; l < employeeInfo.length; l++) {
         if (employeeToDelete == employeeInfo[l]["ninumber"]) {
             // delete employeeInfo[l];
-            let position = employeeInfo[l].indexOf;
-            employeeInfo.splice(position, 1);
+            // let position = employeeInfo[l].indexOf;
+            // console.log(position);
+            employeeInfo.splice(l, 1);
         }
 
     }
@@ -321,6 +437,7 @@ function viewEmployees() {
     divContainer.appendChild(table);
 
 }
+
 
 function clearEmployeeInfo() {
     let tableContainer = document.getElementById("para");
