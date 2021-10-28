@@ -267,11 +267,12 @@ function showSelectedFilter(e) {
 function filterByDepartment(e) {
     e.preventDefault();
     let departmentToFilter = document.getElementById("filterInput").value;
+    let newArray = [];
     for (let l = 0; l < employeeInfo.length; l++) {
+
         if (departmentToFilter == employeeInfo[l]["department"]) {
 
             //add the employees of given department to a JSON array
-            let newArray = [];
             const Employee = { "ninumber": employeeInfo[l]["ninumber"], "fullname": employeeInfo[l]["fullname"], "phone": employeeInfo[l]["phone"], "address": employeeInfo[l]["address"], "department": employeeInfo[l]["department"] };
             newArray.push(Employee);
 
@@ -280,15 +281,27 @@ function filterByDepartment(e) {
             // listEmp.appendChild(newArray);
             //     document.getElementById("filteredEmployees").innerHTML = "Employee Name: " + employeeInfo[l]["fullname"] + "<br/>" + "Department: " + employeeInfo[l]["department"];
 
-            console.log(newArray);
 
-            let listEmp = document.getElementById("filteredEmployees"); //table header
-            listEmp.innerHTML = newArray;
+
+            // let listEmp = document.getElementById("filteredEmployees"); //table header
+            // listEmp.innerHTML = newArray;
 
         }
 
 
+
+
+
+
     }
+    console.log(newArray);
+    //document.getElementById("filteredEmployees").innerHTML = newArray;
+    let output = "";
+    for (let m = 0; m < newArray.length; m++) {
+        output += "NIN: " + newArray[m]["ninumber"] + "Full Name: " + newArray[m]["fullname"] + " Phone number: " + newArray[m]["phone"] + "Address: " + newArray[m]["address"] + "Department: " + newArray[m]["department"];
+
+    }
+    document.getElementById("filteredEmployees").innerHTML = output;
 
 }
 
