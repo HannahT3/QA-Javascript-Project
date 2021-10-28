@@ -221,15 +221,20 @@ function showSelectedDelete(e) {
     let employeeToDelete = document.getElementById("deleteInput").value;
     console.log(employeeToDelete.type);
     for (let l = 0; l < employeeInfo.length; l++) {
-        if (employeeToDelete == employeeInfo[l]["ninumber"]) {
+        if (employeeInfo.some(y => y.ninumber === employeeToDelete)) {
             document.getElementById("messageDelete").innerHTML = "Employee NIN: " + employeeToDelete + "<br/>" + "Employee Name: " + employeeInfo[l]["fullname"];
+        }
+        else {
+            document.getElementById("messageDelete").innerHTML = "The National Insurance Number (NIN) " + employeeToDelete.bold() + " does not exist - ensure that casing is correct. Please enter a valid NIN."
         }
 
 
     }
 
 }
-//try//catch
+
+
+
 
 
 function showSelectedFilter(e) {
@@ -394,8 +399,6 @@ function clearEmployeeInfo() {
     let tableContainer = document.getElementById("para");
     tableContainer.innerHTML = "";
 }
-
-
 
 
 
