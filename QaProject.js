@@ -140,7 +140,7 @@ let formFilter = document.getElementById("filter");
 clearFilterBtn = document.getElementById("clearFilter");
 
 chosenDepartment.addEventListener("click", showSelectedFilter);
-document.addEventListener("submit", filterByDepartment); //why does this work?
+document.addEventListener("submit", filterByDepartment);
 clearFilterBtn.addEventListener("click", clearFilteredEmployees);
 
 // --- VIEWING EMPLOYEES ---
