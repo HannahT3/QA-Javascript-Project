@@ -138,9 +138,12 @@ formDelete.addEventListener("submit", deleteEmployee);
 //Filtering employee info
 let chosenDepartment = document.getElementById("filterSelect");
 let formFilter = document.getElementById("filter");
+clearFilterBtn = document.getElementById("clearFilter");
 
 chosenDepartment.addEventListener("click", showSelectedFilter);
-formFilter = document.addEventListener("submit", filterByDepartment);
+document.addEventListener("submit", filterByDepartment); //why does this work?
+clearFilterBtn.addEventListener("click", clearFilteredEmployees);
+
 
 console.log(employeeInfo);
 
@@ -296,14 +299,60 @@ function filterByDepartment(e) {
     }
     console.log(newArray);
     //document.getElementById("filteredEmployees").innerHTML = newArray;
-    let output = "";
-    for (let m = 0; m < newArray.length; m++) {
-        output += "NIN: " + newArray[m]["ninumber"] + "Full Name: " + newArray[m]["fullname"] + " Phone number: " + newArray[m]["phone"] + "Address: " + newArray[m]["address"] + "Department: " + newArray[m]["department"];
+    // let output = "";
+    // for (let m = 0; m < newArray.length; m++) {
+    //     output += "NIN: " + newArray[m]["ninumber"] + "Full Name: " + newArray[m]["fullname"] + " Phone number: " + newArray[m]["phone"] + "Address: " + newArray[m]["address"] + "Department: " + newArray[m]["department"];
 
+
+    //ocument.getElementById("filteredEmployees").innerHTML = output;
+
+    // creating a table
+    let table = document.createElement("table");
+
+    //Gets header values
+    let col = [];
+    for (let i = 0; i < newArray.length; i++) {
+        for (let key in newArray[i]) {
+            if (col.indexOf(key) === -1) {
+                col.push(key);
+            }
+        }
     }
-    document.getElementById("filteredEmployees").innerHTML = output;
+
+
+    // create html table header row using extracted headers
+
+    let tableRow = table.insertRow(-1); //table row
+    for (let i = 0; i < col.length; i++) {
+        let tableHeader = document.createElement("th") //table header
+        tableHeader.innerHTML = col[i];
+        tableRow.appendChild(tableHeader);
+    }
+
+    //add data to the table
+    for (let i = 0; i < newArray.length; i++) {
+        tableRow = table.insertRow(-1);
+
+        for (let j = 0; j < col.length; j++) {
+            let tabCell = tableRow.insertCell(-1);
+            tabCell.innerHTML = newArray[i][col[j]];
+        }
+    }
+
+    //add table to container
+    let divContainer = document.getElementById("filteredEmployees");
+    divContainer.innerHTML = "";
+    divContainer.appendChild(table);
 
 }
+
+function clearFilteredEmployees() {
+    let container = document.getElementById("filteredEmployees");
+    container.innerHTML = "";
+}
+
+
+
 
 
 function deleteEmployee(e) {
@@ -388,6 +437,7 @@ function viewEmployees() {
     divContainer.appendChild(table);
 
 }
+
 
 function clearEmployeeInfo() {
     let tableContainer = document.getElementById("para");
