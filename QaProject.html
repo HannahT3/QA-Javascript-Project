@@ -13,44 +13,48 @@
 <body>
 
     <h1>Employee Information</h1>
-    <form id="form-view">
 
-        <fieldset>
-            <legend> Employee Information Options </legend>
-            <h2> Employee View </h2>
+    <div class="view">
+        <form id="form-view">
 
-            <p id="para" class="test"> </p>
 
-            <button id="view-Btn" type="button"> View Employee Information </button>
+
+            <h4> Current Employee Information </h4>
+
+            <p id="para" class="table"> </p>
+
+            <button id="view-Btn" type="button" class="button"> View Employee Information </button>
             <button id="clear-Btn" type="button"> Clear Employee Information </button>
             <!-- description when hover? - -don't forget alt for images
             
             <button id="edit-Btn"> Update Existing Employee Information</button>
             <button id="delete-Btn"> Delete Existing Employee </button> -->
-        </fieldset>
-    </form>
 
-    <form id="form-add">
-        <fieldset>
-            <legend> Add a new employee </legend>
+        </form>
+    </div>
+
+    <div class="add">
+        <form id="form-add">
+
+            <h4> Add a New Employee </h4>
 
             <!-- Reset employee info (add button to clear screen)-->
 
-            <label for="nin"> National Insurance Number (NIN)</label>
+            <label for="nin"> National Insurance Number (NIN): </label>
             <input type="text" id="nin" placeholder="Enter NIN here...">
-            </br>
 
-            <label for="name"> Full Name </label>
+
+            <label for="name"> Full Name: </label>
             <input type="text" id="name" placeholder="Enter full name here...">
-            </br>
 
-            <label for="phone"> Phone Number</label>
+
+            <label for="phone"> Phone Number: </label>
             <input type="tel" id="phone" placeholder="Enter phone number here...">
 
-            </br>
-            <label for="address"> Address</label>
+
+            <label for="address"> Address: </label>
             <input type="text" id="address" placeholder="Enter address here...">
-            </br>
+
 
             <label for="department"> Choose a department: </label>
             <select name="department" id="department">
@@ -60,15 +64,17 @@
                 <option value="other"> Other </option>
             </select>
 
-            </br>
+
             <button type="submit" value="submit" id="submitAdd"> Submit </button>
 
-        </fieldset>
-    </form>
 
-    <form id="form-edit">
-        <fieldset>
-            <legend> Edit an Existing Employee </legend>
+        </form>
+    </div>
+
+    <div class="edit">
+        <form id="form-edit">
+
+            <h4> Edit an Existing Employee </h4>
 
             <label for="updateDrop"> Click here to update dropdown options: </label>
             <button id="updateDrop" type="button"> Update Dropdown Box </button>
@@ -106,13 +112,14 @@
             </br>
             <button type="button" id="submitEdit2"> Submit </button>
 
-        </fieldset>
-    </form>
 
+        </form>
+    </div>
 
-    <form id="form-delete">
-        <fieldset>
-            <legend> Delete an Existing Employee </legend>
+    <div class="delete">
+        <form id="form-delete">
+
+            <h4> Delete an Existing Employee </h4>
 
             <!-- <label for="dropboxDelete"> Click here to update dropdown options: </label>
             <button id="dropboxDelete" type="button"> Update Dropdown Box </button>
@@ -135,38 +142,39 @@
             <p id="messageDelete"></p>
 
             <button type="submit" id="delete"> Delete Employee </button>
-        </fieldset>
-    </form>
 
-    <form id="form-filter">
-        <fieldset>
-            <legend> Filter by department </legend>
+        </form>
+    </div>
+
+    <div class="filter">
+        <form id="form-filter">
+
+            <h4> Filter by department </h4>
 
 
             <label for="filterInput"> Please enter the department you wish to view: </label>
             <input type="text" id="filterInput">
 
-            <button type="button" id="filterSelect"> Click to enter </button>
+            <button type="button" id="filterSelect" class="filterButton"> Click to enter </button>
 
 
-            </br>
+
             <!-- <p id="messageFilter"></p> -->
             <p id="messageFilter"> </p>
 
-            </br>
             <p id="filteredEmployees"> </p>
 
 
             <button type="submit" id="filter"> Filter Employee Info </button>
             <button type="button" id="clearFilter"> Clear Filtered Employee Info </button>
-        </fieldset>
-    </form>
 
-    <div>
-
-        <!-- <p id="messageFilter"></p> -->
-
+        </form>
     </div>
+    <!-- <div>
+
+        <p id="messageFilter"></p> 
+
+    </div> -->
 
     <!-- <ul class="employee-info"></ul> -->
 
