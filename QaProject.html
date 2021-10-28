@@ -13,7 +13,7 @@
 <body>
 
     <h1>Employee Information</h1>
-
+    <!-- Viewing Employees section -->
     <div class="view">
         <form id="form-view">
 
@@ -25,20 +25,16 @@
 
             <button id="view-Btn" type="button" class="button"> View Employee Information </button>
             <button id="clear-Btn" type="button"> Clear Employee Information </button>
-            <!-- description when hover? - -don't forget alt for images
-            
-            <button id="edit-Btn"> Update Existing Employee Information</button>
-            <button id="delete-Btn"> Delete Existing Employee </button> -->
+
 
         </form>
     </div>
 
+    <!-- Adding Employees section -->
     <div class="add">
         <form id="form-add">
 
             <h4> Add a New Employee </h4>
-
-            <!-- Reset employee info (add button to clear screen)-->
 
             <label for="nin"> National Insurance Number (NIN): </label>
             <input type="text" id="nin" placeholder="Enter NIN here...">
@@ -71,6 +67,7 @@
         </form>
     </div>
 
+    <!-- Editing Employees section -->
     <div class="edit">
         <form id="form-edit">
 
@@ -116,6 +113,7 @@
         </form>
     </div>
 
+    <!-- Deleting Employees section -->
     <div class="delete">
         <form id="form-delete">
 
@@ -125,7 +123,7 @@
                 delete: </label>
             <input type="text" id="deleteInput">
 
-            <button type="button" id="employeeSelect">Enter Employee Choice </button>
+            <button type="button" id="selectedEmployee">Enter Employee Choice </button>
 
 
             </br>
@@ -136,6 +134,7 @@
         </form>
     </div>
 
+    <!-- Filtering Employees section -->
     <div class="filter">
         <form id="form-filter">
 

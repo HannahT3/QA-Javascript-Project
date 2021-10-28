@@ -1,3 +1,4 @@
+//Employee Information initial data
 let employeeInfo =
     [
         {
@@ -102,13 +103,14 @@ let employeeInfo =
 
     ];
 
-
+// --- FUNCTIONALITY OF THE INPUTS, BUTTONS AND DROPDOWN ---
 
 //Viewing employee info
 let viewBtn = document.getElementById("view-Btn");
 const formView = document.getElementById('form-view');
-viewBtn.addEventListener("click", viewEmployees);
 let clearBtn = document.getElementById("clear-Btn");
+
+viewBtn.addEventListener("click", viewEmployees);
 clearBtn.addEventListener("click", clearEmployeeInfo);
 
 //Adding employee info
@@ -119,15 +121,14 @@ formAdd.addEventListener("submit", addNewEmployee);
 let editBtn = document.getElementById("submitEdit2");
 const formEdit = document.getElementById('form-edit');
 let dropdown = document.getElementById('updateDrop');
+
 formEdit.addEventListener("submit", editEmployee);
 dropdown.addEventListener("click", employeeSelect);
 editBtn.addEventListener("click", updateEmployee);
 
 //Deleting employee info
 let chosenEmployee = document.getElementById("employeeSelect");
-//let deleteBtn = document.getElementById("delete");
 const formDelete = document.getElementById('form-delete');
-// let updateDeleteDrop = document.getElementById('dropboxDelete');
 
 chosenEmployee.addEventListener("click", showSelectedDelete);
 formDelete.addEventListener("submit", deleteEmployee);
@@ -142,217 +143,9 @@ chosenDepartment.addEventListener("click", showSelectedFilter);
 document.addEventListener("submit", filterByDepartment); //why does this work?
 clearFilterBtn.addEventListener("click", clearFilteredEmployees);
 
-
-
-
-
-
-function addNewEmployee(e) {
-    e.preventDefault();
-    let niInput = document.getElementById("nin").value;
-    let fullNameInput = document.getElementById("name").value;
-    let phoneNumberInput = document.getElementById("phone").value;
-    let addressInput = document.getElementById("address").value;
-    let depInput = document.getElementById("department").value;
-    const newEmployee = { "ninumber": niInput, "fullname": fullNameInput, "phone": phoneNumberInput, "address": addressInput, "department": depInput };
-    console.log(newEmployee);
-    employeeInfo.push(newEmployee);
-    console.log(employeeInfo);
-
-}
-
-function employeeSelect() {
-
-    for (let i = 0; i < employeeInfo.length; i++) {
-        let optn = employeeInfo[i]["fullname"];
-        let element = document.createElement("option");
-        element.textContent = optn;
-        element.value = optn;
-        select.appendChild(element);
-
-
-    }
-}
-
-
-
-function editEmployee(e) {
-    e.preventDefault();
-    let selectedEmployee = document.getElementById("select").value;
-    document.getElementById("message").innerHTML = "Employee selected: " + selectedEmployee;
-    document.getElementById("nameEdit").placeholder = selectedEmployee;
-    for (let j = 0; j < employeeInfo.length; j++) {
-        if (selectedEmployee == employeeInfo[j]["fullname"]) {
-            document.getElementById("ninEdit").value = employeeInfo[j]["ninumber"];
-            document.getElementById("nameEdit").value = employeeInfo[j]["fullname"];
-            document.getElementById("phoneEdit").value = employeeInfo[j]["phone"];
-            document.getElementById("addressEdit").value = employeeInfo[j]["address"];
-            document.getElementById("departmentEdit").value = employeeInfo[j]["department"];
-
-
-        }
-
-    }
-
-}
-
-function updateEmployee(e) {
-    e.preventDefault();
-    let selectedEmployee = document.getElementById("select").value;
-    for (let k = 0; k < employeeInfo.length; k++) {
-        if (selectedEmployee == employeeInfo[k]["fullname"]) {
-
-            let niEdit = document.getElementById("ninEdit").value;
-            let fullNameEdit = document.getElementById("nameEdit").value;
-            let phoneNumberEdit = document.getElementById("phoneEdit").value;
-            let addEdit = document.getElementById("addressEdit").value;
-            let depEdit = document.getElementById("departmentEdit").value;
-
-            employeeInfo[k] = { "ninumber": niEdit, "fullname": fullNameEdit, "phone": phoneNumberEdit, "address": addEdit, "department": depEdit };
-            console.log(employeeInfo);
-        }
-    }
-}
-
-
-
-function showSelectedDelete(e) {
-    e.preventDefault();
-    let employeeToDelete = document.getElementById("deleteInput").value;
-    console.log(employeeToDelete.type);
-    for (let l = 0; l < employeeInfo.length; l++) {
-        if (employeeInfo.some(y => y.ninumber === employeeToDelete)) {
-            document.getElementById("messageDelete").innerHTML = "Employee NIN: " + employeeToDelete + "<br/>" + "Employee Name: " + employeeInfo[l]["fullname"];
-        }
-        else {
-            document.getElementById("messageDelete").innerHTML = "The National Insurance Number (NIN) " + employeeToDelete.bold() + " does not exist - ensure that casing is correct. Please enter a valid NIN."
-        }
-
-
-    }
-
-}
-
-
-
-
-
-function showSelectedFilter(e) {
-    e.preventDefault();
-    //let message = "";
-    let departmentToFilter = document.getElementById("filterInput").value;
-    if (employeeInfo.some(x => x.department === departmentToFilter)) {
-        document.getElementById("messageFilter").innerHTML = "Chosen Department: " + departmentToFilter;
-        // document.getElementById("messageFilter").innerHTML = "Department: " + departmentToFilter;
-    }
-    else {
-        document.getElementById("messageFilter").innerHTML = "The department " + departmentToFilter.bold() + " does not exist - ensure that casing is correct. Please enter a valid department.";
-
-    }
-    //document.getElementById("messageFilter").innerHTML = message;
-    // console.log(employeeInfo.some(x => x.department === departmentToFilter));
-
-
-
-}
-
-function filterByDepartment(e) {
-    e.preventDefault();
-    let departmentToFilter = document.getElementById("filterInput").value;
-    let newArray = [];
-    for (let l = 0; l < employeeInfo.length; l++) {
-
-        if (departmentToFilter == employeeInfo[l]["department"]) {
-
-            //add the employees of given department to a JSON array
-            const Employee = { "ninumber": employeeInfo[l]["ninumber"], "fullname": employeeInfo[l]["fullname"], "phone": employeeInfo[l]["phone"], "address": employeeInfo[l]["address"], "department": employeeInfo[l]["department"] };
-            newArray.push(Employee);
-
-        }
-
-
-
-
-
-
-    }
-    console.log(newArray);
-
-    // creating a table
-    let table = document.createElement("table");
-
-    //Gets header values
-    let col = [];
-    for (let i = 0; i < newArray.length; i++) {
-        for (let key in newArray[i]) {
-            if (col.indexOf(key) === -1) {
-                col.push(key);
-            }
-        }
-    }
-
-
-    // create html table header row using extracted headers
-
-    let tableRow = table.insertRow(-1); //table row
-    for (let i = 0; i < col.length; i++) {
-        let tableHeader = document.createElement("th") //table header
-        tableHeader.innerHTML = col[i];
-        tableRow.appendChild(tableHeader);
-    }
-
-    //add data to the table
-    for (let i = 0; i < newArray.length; i++) {
-        tableRow = table.insertRow(-1);
-
-        for (let j = 0; j < col.length; j++) {
-            let tabCell = tableRow.insertCell(-1);
-            tabCell.innerHTML = newArray[i][col[j]];
-        }
-    }
-
-    //add table to container
-    let divContainer = document.getElementById("filteredEmployees");
-    divContainer.innerHTML = "";
-    divContainer.appendChild(table);
-
-}
-
-function clearFilteredEmployees() {
-    let container = document.getElementById("filteredEmployees");
-    container.innerHTML = "";
-}
-
-
-
-
-
-function deleteEmployee(e) {
-    e.preventDefault();
-    let employeeToDelete = document.getElementById("deleteInput").value;
-    for (let l = 0; l < employeeInfo.length; l++) {
-        if (employeeToDelete == employeeInfo[l]["ninumber"]) {
-            // delete employeeInfo[l];
-            // let position = employeeInfo[l].indexOf;
-            // console.log(position);
-            employeeInfo.splice(l, 1);
-        }
-
-    }
-
-    console.log(employeeInfo);
-}
-
-
-
-console.log(employeeInfo);
-
-
-
-
-
+// --- VIEWING EMPLOYEES ---
+//Shows current employee information in a table
 function viewEmployees() {
-
 
     // creating a table
     let table = document.createElement("table");
@@ -367,9 +160,7 @@ function viewEmployees() {
         }
     }
 
-
-    // create html table header row using extracted headers
-
+    // create table header row using extracted headers
     let tableRow = table.insertRow(-1); //table row
     for (let i = 0; i < col.length; i++) {
         let tableHeader = document.createElement("th") //table header
@@ -394,11 +185,207 @@ function viewEmployees() {
 
 }
 
-
+//clears the table of employee information
 function clearEmployeeInfo() {
     let tableContainer = document.getElementById("para");
     tableContainer.innerHTML = "";
 }
+
+//allows the user to add a new employee
+function addNewEmployee(e) {
+    e.preventDefault();
+    // gets the values from user input
+    let niInput = document.getElementById("nin").value;
+    let fullNameInput = document.getElementById("name").value;
+    let phoneNumberInput = document.getElementById("phone").value;
+    let addressInput = document.getElementById("address").value;
+    let depInput = document.getElementById("department").value;
+
+    //stores the inputs as newEmployee
+    const newEmployee = { "ninumber": niInput, "fullname": fullNameInput, "phone": phoneNumberInput, "address": addressInput, "department": depInput };
+
+    //adds the inputted object to the array
+    employeeInfo.push(newEmployee);
+
+
+}
+
+// --- EDIT EXISTING EMPLOYEE ---
+//creates the dropdown box
+function employeeSelect() {
+
+    for (let i = 0; i < employeeInfo.length; i++) {
+        let optn = employeeInfo[i]["fullname"];
+        let element = document.createElement("option");
+        element.textContent = optn;
+        element.value = optn;
+        select.appendChild(element);
+
+
+    }
+}
+
+
+//Shows selected employee and adds their current info to input boxes, allowing them to be editted
+function editEmployee(e) {
+    e.preventDefault();
+    let selectedEmployee = document.getElementById("select").value;
+    document.getElementById("message").innerHTML = "Employee selected: " + selectedEmployee;
+    document.getElementById("nameEdit").placeholder = selectedEmployee;
+    for (let j = 0; j < employeeInfo.length; j++) {
+        if (selectedEmployee == employeeInfo[j]["fullname"]) {
+            document.getElementById("ninEdit").value = employeeInfo[j]["ninumber"];
+            document.getElementById("nameEdit").value = employeeInfo[j]["fullname"];
+            document.getElementById("phoneEdit").value = employeeInfo[j]["phone"];
+            document.getElementById("addressEdit").value = employeeInfo[j]["address"];
+            document.getElementById("departmentEdit").value = employeeInfo[j]["department"];
+
+
+        }
+
+    }
+
+}
+
+//updates the employee's information
+function updateEmployee(e) {
+    e.preventDefault();
+    let selectedEmployee = document.getElementById("select").value;
+    for (let k = 0; k < employeeInfo.length; k++) {
+        if (selectedEmployee == employeeInfo[k]["fullname"]) {
+
+            let niEdit = document.getElementById("ninEdit").value;
+            let fullNameEdit = document.getElementById("nameEdit").value;
+            let phoneNumberEdit = document.getElementById("phoneEdit").value;
+            let addEdit = document.getElementById("addressEdit").value;
+            let depEdit = document.getElementById("departmentEdit").value;
+
+            employeeInfo[k] = { "ninumber": niEdit, "fullname": fullNameEdit, "phone": phoneNumberEdit, "address": addEdit, "department": depEdit };
+            console.log(employeeInfo);
+        }
+    }
+}
+
+// --- DELETE EXISTING EMPLOYEE ---
+// shows the chosen employee and prints to the webpage
+function showSelectedDelete(e) {
+    e.preventDefault();
+    let employeeToDelete = document.getElementById("deleteInput").value;
+    console.log(employeeToDelete.type);
+    for (let l = 0; l < employeeInfo.length; l++) {
+        if (employeeInfo.some(y => y.ninumber === employeeToDelete)) {
+            document.getElementById("messageDelete").innerHTML = "Employee NIN: " + employeeToDelete + "<br/>" + "Employee Name: " + employeeInfo[l]["fullname"];
+        }
+        else {
+            document.getElementById("messageDelete").innerHTML = "The National Insurance Number (NIN) " + employeeToDelete.bold() + " does not exist - ensure that casing is correct. Please enter a valid NIN."
+        }
+
+
+    }
+
+}
+
+//removes chosen employee from the array
+function deleteEmployee(e) {
+    e.preventDefault();
+    let employeeToDelete = document.getElementById("deleteInput").value;
+    for (let l = 0; l < employeeInfo.length; l++) {
+        if (employeeToDelete == employeeInfo[l]["ninumber"]) {
+            employeeInfo.splice(l, 1);
+        }
+
+    }
+
+    console.log(employeeInfo);
+}
+
+
+// --- FILTER BY DEPARTMENT ---
+// shows which department has been selected
+function showSelectedFilter(e) {
+    e.preventDefault();
+    //let message = "";
+    let departmentToFilter = document.getElementById("filterInput").value;
+    if (employeeInfo.some(x => x.department === departmentToFilter)) {
+        document.getElementById("messageFilter").innerHTML = "Chosen Department: " + departmentToFilter;
+        // document.getElementById("messageFilter").innerHTML = "Department: " + departmentToFilter;
+    }
+    else {
+        document.getElementById("messageFilter").innerHTML = "The department " + departmentToFilter.bold() + " does not exist - ensure that casing is correct. Please enter a valid department.";
+
+    }
+
+}
+
+//creates table which is filtered by chosen department
+function filterByDepartment(e) {
+    e.preventDefault();
+    let departmentToFilter = document.getElementById("filterInput").value;
+    let newArray = [];
+    for (let l = 0; l < employeeInfo.length; l++) {
+
+        if (departmentToFilter == employeeInfo[l]["department"]) {
+
+            //add the employees of given department to a JSON array
+            const Employee = { "ninumber": employeeInfo[l]["ninumber"], "fullname": employeeInfo[l]["fullname"], "phone": employeeInfo[l]["phone"], "address": employeeInfo[l]["address"], "department": employeeInfo[l]["department"] };
+            newArray.push(Employee);
+
+        }
+
+    }
+
+
+    // creating a table
+    let table = document.createElement("table");
+
+    //gets header values
+    let col = [];
+    for (let i = 0; i < newArray.length; i++) {
+        for (let key in newArray[i]) {
+            if (col.indexOf(key) === -1) {
+                col.push(key);
+            }
+        }
+    }
+
+
+    // create html table header row using extracted headers
+    let tableRow = table.insertRow(-1); //table row
+    for (let i = 0; i < col.length; i++) {
+        let tableHeader = document.createElement("th") //table header
+        tableHeader.innerHTML = col[i];
+        tableRow.appendChild(tableHeader);
+    }
+
+    //add data to the table
+    for (let i = 0; i < newArray.length; i++) {
+        tableRow = table.insertRow(-1);
+
+        for (let j = 0; j < col.length; j++) {
+            let tabCell = tableRow.insertCell(-1);
+            tabCell.innerHTML = newArray[i][col[j]];
+        }
+    }
+
+    //add table to container
+    let divContainer = document.getElementById("filteredEmployees");
+    divContainer.innerHTML = "";
+    divContainer.appendChild(table);
+
+}
+
+//clears the filtered table
+function clearFilteredEmployees() {
+    let container = document.getElementById("filteredEmployees");
+    container.innerHTML = "";
+}
+
+
+
+
+
+
+
 
 
 
