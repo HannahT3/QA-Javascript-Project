@@ -127,7 +127,7 @@ dropdown.addEventListener("click", employeeSelect);
 editBtn.addEventListener("click", updateEmployee);
 
 //Deleting employee info
-let chosenEmployee = document.getElementById("employeeSelect");
+let chosenEmployee = document.getElementById("selectedEmployee");
 const formDelete = document.getElementById('form-delete');
 
 chosenEmployee.addEventListener("click", showSelectedDelete);
