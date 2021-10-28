@@ -131,8 +131,6 @@ const formDelete = document.getElementById('form-delete');
 
 chosenEmployee.addEventListener("click", showSelectedDelete);
 formDelete.addEventListener("submit", deleteEmployee);
-// updateDeleteDrop.addEventListener("click", employeeSelectDelete);
-// deleteBtn.addEventListener("click", deleteEmployee);
 
 
 //Filtering employee info
@@ -145,7 +143,7 @@ document.addEventListener("submit", filterByDepartment); //why does this work?
 clearFilterBtn.addEventListener("click", clearFilteredEmployees);
 
 
-console.log(employeeInfo);
+
 
 
 
@@ -176,26 +174,7 @@ function employeeSelect() {
     }
 }
 
-// function employeeSelectDelete() {
 
-//     for (let z = 0; z < employeeInfo.length; z++) {
-//         let optn2 = employeeInfo[z]["fullname"];
-//         let element2 = document.createElement("option");
-//         element2.textContent = optn2;
-//         element2.value = optn2;
-//         select.appendChild(element2);
-
-
-//     }
-// }
-
-// function chooseEmployee(e) {
-//     e.preventDefault();
-//     let selectedEmployee = document.getElementById("select").value;
-//     document.getElementById("message").innerHTML = "Employee selected: " + selectedEmployee;
-//     document.getElementById("nameEdit").placeholder = selectedEmployee;
-
-// }
 
 function editEmployee(e) {
     e.preventDefault();
@@ -255,15 +234,20 @@ function showSelectedDelete(e) {
 
 function showSelectedFilter(e) {
     e.preventDefault();
+    //let message = "";
     let departmentToFilter = document.getElementById("filterInput").value;
-    document.getElementById("messageFilter").innerHTML = "Department: " + departmentToFilter;
-    // for (let l = 0; l < employeeInfo.length; l++) {
-    //     if (departmentToFilter == employeeInfo[l]["department"]) {
-    //         document.getElementById("messageDelete").innerHTML = "Employee NIN: " + departmentToFilter + "<br/>" + "Employee Name: " + employeeInfo[l]["fullname"];
-    //     }
+    if (employeeInfo.some(x => x.department === departmentToFilter)) {
+        document.getElementById("messageFilter").innerHTML = "Chosen Department: " + departmentToFilter;
+        // document.getElementById("messageFilter").innerHTML = "Department: " + departmentToFilter;
+    }
+    else {
+        document.getElementById("messageFilter").innerHTML = "The department " + departmentToFilter.bold() + " does not exist - ensure that casing is correct. Please enter a valid department.";
+
+    }
+    //document.getElementById("messageFilter").innerHTML = message;
+    // console.log(employeeInfo.some(x => x.department === departmentToFilter));
 
 
-    // }
 
 }
 
@@ -279,16 +263,6 @@ function filterByDepartment(e) {
             const Employee = { "ninumber": employeeInfo[l]["ninumber"], "fullname": employeeInfo[l]["fullname"], "phone": employeeInfo[l]["phone"], "address": employeeInfo[l]["address"], "department": employeeInfo[l]["department"] };
             newArray.push(Employee);
 
-            // let listEmp = document.getElementById("filteredEmployees"); //table header
-            // listEmp.innerHTML = "";
-            // listEmp.appendChild(newArray);
-            //     document.getElementById("filteredEmployees").innerHTML = "Employee Name: " + employeeInfo[l]["fullname"] + "<br/>" + "Department: " + employeeInfo[l]["department"];
-
-
-
-            // let listEmp = document.getElementById("filteredEmployees"); //table header
-            // listEmp.innerHTML = newArray;
-
         }
 
 
@@ -298,13 +272,6 @@ function filterByDepartment(e) {
 
     }
     console.log(newArray);
-    //document.getElementById("filteredEmployees").innerHTML = newArray;
-    // let output = "";
-    // for (let m = 0; m < newArray.length; m++) {
-    //     output += "NIN: " + newArray[m]["ninumber"] + "Full Name: " + newArray[m]["fullname"] + " Phone number: " + newArray[m]["phone"] + "Address: " + newArray[m]["address"] + "Department: " + newArray[m]["department"];
-
-
-    //ocument.getElementById("filteredEmployees").innerHTML = output;
 
     // creating a table
     let table = document.createElement("table");
@@ -371,21 +338,6 @@ function deleteEmployee(e) {
     console.log(employeeInfo);
 }
 
-//splice, delete sets to null w3schools/ stack overflow 
-
-//document.getElementById("ninEdit").placeholder = placeholdername;
-
-// function updateEmployee(e) {
-//     e.preventDefault
-// }
-//new form set new numbers by id, pass in for index - overwriteg
-
-
-// formView.addEventListener("submit", (e) => {
-//     e.preventDefault();
-
-// })
-
 
 
 console.log(employeeInfo);
@@ -394,7 +346,6 @@ console.log(employeeInfo);
 
 
 
-//SEE DOMS FOR EXAMPLES --- Create a table
 function viewEmployees() {
 
 
@@ -444,18 +395,7 @@ function clearEmployeeInfo() {
     tableContainer.innerHTML = "";
 }
 
-// let a = "SW34983948";
-// let b = "My Name";
-// let c = "079999999";
-// let d = "My address";
-// let e = "HR";
-// addNewEmployee(a, b, c, d, e);
 
-
-//Event listening, bubbling
-
-
-//console.log(employeeInfo.ninumber);
 
 
 
