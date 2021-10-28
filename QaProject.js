@@ -134,6 +134,14 @@ formDelete.addEventListener("submit", deleteEmployee);
 // updateDeleteDrop.addEventListener("click", employeeSelectDelete);
 // deleteBtn.addEventListener("click", deleteEmployee);
 
+
+//Filtering employee info
+let chosenDepartment = document.getElementById("filterSelect");
+let formFilter = document.getElementById("filter");
+
+chosenDepartment.addEventListener("click", showSelectedFilter);
+formFilter = document.addEventListener("submit", filterByDepartment);
+
 console.log(employeeInfo);
 
 
@@ -229,6 +237,7 @@ function updateEmployee(e) {
 function showSelectedDelete(e) {
     e.preventDefault();
     let employeeToDelete = document.getElementById("deleteInput").value;
+    console.log(employeeToDelete.type);
     for (let l = 0; l < employeeInfo.length; l++) {
         if (employeeToDelete == employeeInfo[l]["ninumber"]) {
             document.getElementById("messageDelete").innerHTML = "Employee NIN: " + employeeToDelete + "<br/>" + "Employee Name: " + employeeInfo[l]["fullname"];
@@ -239,6 +248,50 @@ function showSelectedDelete(e) {
 
 }
 //try//catch
+
+
+function showSelectedFilter(e) {
+    e.preventDefault();
+    let departmentToFilter = document.getElementById("filterInput").value;
+    document.getElementById("messageFilter").innerHTML = "Department: " + departmentToFilter;
+    // for (let l = 0; l < employeeInfo.length; l++) {
+    //     if (departmentToFilter == employeeInfo[l]["department"]) {
+    //         document.getElementById("messageDelete").innerHTML = "Employee NIN: " + departmentToFilter + "<br/>" + "Employee Name: " + employeeInfo[l]["fullname"];
+    //     }
+
+
+    // }
+
+}
+
+function filterByDepartment(e) {
+    e.preventDefault();
+    let departmentToFilter = document.getElementById("filterInput").value;
+    for (let l = 0; l < employeeInfo.length; l++) {
+        if (departmentToFilter == employeeInfo[l]["department"]) {
+
+            //add the employees of given department to a JSON array
+            let newArray = [];
+            const Employee = { "ninumber": employeeInfo[l]["ninumber"], "fullname": employeeInfo[l]["fullname"], "phone": employeeInfo[l]["phone"], "address": employeeInfo[l]["address"], "department": employeeInfo[l]["department"] };
+            newArray.push(Employee);
+
+            // let listEmp = document.getElementById("filteredEmployees"); //table header
+            // listEmp.innerHTML = "";
+            // listEmp.appendChild(newArray);
+            //     document.getElementById("filteredEmployees").innerHTML = "Employee Name: " + employeeInfo[l]["fullname"] + "<br/>" + "Department: " + employeeInfo[l]["department"];
+
+            console.log(newArray);
+
+            let listEmp = document.getElementById("filteredEmployees"); //table header
+            listEmp.innerHTML = newArray;
+
+        }
+
+
+    }
+
+}
+
 
 function deleteEmployee(e) {
     e.preventDefault();

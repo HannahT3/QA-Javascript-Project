@@ -129,19 +129,30 @@
         </fieldset>
     </form>
 
+    <form id="form-filter">
+        <fieldset>
+            <legend> Filter by department </legend>
 
 
+            <label for="filterInput"> Please enter the department you wish to view: </label>
+            <input type="text" id="filterInput">
+
+            <button type="button" id="filterSelect"> Click to enter </button>
 
 
+            </br>
+            <!-- <p id="messageFilter"></p> -->
+            <p id="messageFilter"> </p>
 
 
-    <!-- <form method="post" action="QaProject.js">
-
-    </form> -->
+            <button type="submit" id="filter"> Filter Employee Info </button>
+        </fieldset>
+    </form>
 
     <div>
         <p id="para" class="test"> </p>
-
+        <!-- <p id="messageFilter"></p> -->
+        <p id="filteredEmployees"> </p>
     </div>
 
     <!-- <ul class="employee-info"></ul> -->
