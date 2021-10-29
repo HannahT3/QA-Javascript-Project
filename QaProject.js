@@ -308,11 +308,11 @@ function deleteEmployee(e) {
 // shows which department has been selected
 function showSelectedFilter(e) {
     e.preventDefault();
-    //let message = "";
+    
     let departmentToFilter = document.getElementById("filterInput").value;
     if (employeeInfo.some(x => x.department === departmentToFilter)) {
         document.getElementById("messageFilter").innerHTML = "Chosen Department: " + departmentToFilter;
-        // document.getElementById("messageFilter").innerHTML = "Department: " + departmentToFilter;
+       
     }
     else {
         document.getElementById("messageFilter").innerHTML = "The department " + departmentToFilter.bold() + " does not exist - ensure that casing is correct. Please enter a valid department.";
