@@ -16,7 +16,7 @@ This project involved creating a webpage which enables the user to create, read,
 The HTML code was the first thing to be created, so that the structure of the webpage was clear.  This allowed the JavaScript to be created followed by the CSS to alter the appearance.
 
 ## Conclusion
-The webpage includes all of the requirements and functions as it should.  There were some challenges along the process, including issues with a dropdown box which was replaced with an input box to fix the error.
+The webpage includes all of the requirements and functions as it should.  There were some challenges along the process, including issues with a dropdown box which was replaced with an input box to avoid the error.
 
 To improve this project, the code could be made more concise, with similar methods being refactored to reduce repitions within code (for example, the viewEmployees() and filterByDepartment()).
 
