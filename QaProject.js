@@ -266,6 +266,7 @@ function updateEmployee(e) {
     }
 }
 
+// --- DELETING AN EMPLOYEE ---
 function showSelectedDelete(e) {
     e.preventDefault();
 
