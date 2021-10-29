@@ -1,0 +1,59 @@
+body{
+    background-color: #e0dde0;
+    font-family: Verdana;
+    padding: 20px;
+    border: 40px groove #49274A;
+    border-radius: 50px;
+}
+
+h1{
+    padding: 20px;
+    text-align: center;
+   
+}
+
+div{
+    background-color: #94618E;
+    border-color: #94618E ;
+    border-radius: 12px;
+    border-style: inset;
+    padding: 12px;
+    margin: 15px;
+}
+
+button{
+    background-color: #49274A;
+    color: #c9b3c6;
+}
+
+input{
+    background-color: #c9b3c6;
+    
+}
+
+select{
+    background-color: #c9b3c6;
+    
+}
+
+th, td{
+            font:14px Verdana;
+        }
+        table, td 
+        {
+            border: solid 1px #49274A;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+            background-color: #c9b3c6;
+        }
+        th {
+            font-weight:bold;
+            background-color: #49274A;
+        }
+
+table{
+      margin-left: auto;
+    margin-right: auto;
+ }
+
