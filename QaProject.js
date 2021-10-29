@@ -266,24 +266,27 @@ function updateEmployee(e) {
     }
 }
 
-// --- DELETE EXISTING EMPLOYEE ---
-// shows the chosen employee and prints to the webpage
 function showSelectedDelete(e) {
     e.preventDefault();
+
     let employeeToDelete = document.getElementById("deleteInput").value;
     console.log(employeeToDelete.type);
-    for (let l = 0; l < employeeInfo.length; l++) {
-        if (employeeInfo.some(y => y.ninumber === employeeToDelete)) {
-            document.getElementById("messageDelete").innerHTML = "Employee NIN: " + employeeToDelete + "<br/>" + "Employee Name: " + employeeInfo[l]["fullname"];
+    if (employeeInfo.some(x => x.ninumber === employeeToDelete)) {
+        for (let i = 0; i < employeeInfo.length; i++) {
+            if (employeeToDelete == employeeInfo[i]["ninumber"]) {
+                document.getElementById("messageDelete").innerHTML = "Employee NIN: " + employeeToDelete + "<br/>" + "Employee Name: " + employeeInfo[i]["fullname"];
+            }
         }
-        else {
-            document.getElementById("messageDelete").innerHTML = "The National Insurance Number (NIN) " + employeeToDelete.bold() + " does not exist - ensure that casing is correct. Please enter a valid NIN."
-        }
-
-
+    }
+    else {
+        document.getElementById("messageDelete").innerHTML = "The National Insurance Number (NIN) " + employeeToDelete.bold() + " does not exist - ensure that casing is correct. Please enter a valid NIN."
     }
 
+
 }
+
+
+
 
 //removes chosen employee from the array
 function deleteEmployee(e) {
